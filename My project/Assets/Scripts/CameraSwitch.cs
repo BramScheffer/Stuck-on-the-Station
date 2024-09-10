@@ -15,6 +15,7 @@ public class CameraSwitch : MonoBehaviour
         playCam.enabled = true;
         buyCam.enabled = false;
         camswitched = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
