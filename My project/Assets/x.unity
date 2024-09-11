@@ -247,7 +247,7 @@ MonoBehaviour:
   body: {fileID: 363556949}
   mouseX: 0
   bodyRot: {x: 0, y: 0, z: 0}
-  rotSpeed2: 250
+  rotSpeed2: 300
 --- !u!1 &549609228
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,13 +554,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000629227}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.20260791, z: -0, w: 0.97925997}
-  m_LocalPosition: {x: -0.00000017923716, y: 0.76, z: 0.00000033707147}
+  m_LocalRotation: {x: -0, y: 0.34539357, z: -0, w: 0.938458}
+  m_LocalPosition: {x: -0.00000012806171, y: 0.76, z: 0.00000028799116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 363556949}
-  m_LocalEulerAnglesHint: {x: 0, y: 23.379, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 40.412, z: 0}
 --- !u!114 &1000629231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
   head: {fileID: 1000629230}
   mouseY: 0
   headRot: {x: 0, y: 0, z: 0}
-  rotSpeed: 200
+  rotSpeed: 300
   maxRotationX: 70
 --- !u!114 &1000629232
 MonoBehaviour:
@@ -610,6 +610,9 @@ MonoBehaviour:
   reloadTime: 2
   range: 100
   damage: 10
+  enemySc: {fileID: 1562573880}
+  ammo: 0
+  empty: 0
   muzzleFlash: {fileID: 4410266641938762927, guid: e7222c510fce4d4439700bc0dde9df82, type: 3}
   impactEffect: {fileID: 7925723148074563215, guid: 09412b45bac090744a01367c2ac71497, type: 3}
   fpsCamera: {fileID: 1000629229}
@@ -748,7 +751,7 @@ GameObject:
   - component: {fileID: 1562573876}
   - component: {fileID: 1562573880}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,7 +837,7 @@ Transform:
   m_GameObject: {fileID: 1562573875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 3.31, z: -7.95}
+  m_LocalPosition: {x: 0.35, y: 4.59, z: -7.95}
   m_LocalScale: {x: 13.593, y: 9.4469, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,6 +856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hits: 0
+  health: 0
+  giant: 1
 --- !u!1001 &831937023300242744
 PrefabInstance:
   m_ObjectHideFlags: 0

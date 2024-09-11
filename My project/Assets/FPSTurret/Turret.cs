@@ -15,6 +15,9 @@ public class Turret : MonoBehaviour
     public float reloadTime = 2f;
     public float range = 100f; // Maximum range of the gun
     public float damage = 10f; // Damage dealt to targets
+    public Enemy enemySc;
+    public float ammo;
+    public bool empty;
 
     // Effects
     public ParticleSystem muzzleFlash;
@@ -31,6 +34,8 @@ public class Turret : MonoBehaviour
     void Start()
     {
         currentAmmo = maxAmmo;
+        ammo = 50;
+        empty = false;
     }
 
     void Update()
@@ -49,9 +54,17 @@ public class Turret : MonoBehaviour
         // Fire the gun when the fire button is held down and the time to fire has passed
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
-            nextTimeToFire = Time.time + 1f / fireRate;
-            Shoot();
+            if (!empty)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+            }
         }
+        if (ammo <= 0)
+        {
+            empty = true;
+        }
+        print(ammo);
     }
 
     void Shoot()
@@ -59,6 +72,7 @@ public class Turret : MonoBehaviour
         // Check ammo count
         if (currentAmmo <= 0)
             return;
+        ammo -= 1f;
 
         // Play muzzle flash effect
         if (muzzleFlash != null)
@@ -78,6 +92,8 @@ public class Turret : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 print("1");
+                enemySc.hit();
+                
             }
 
             // Instantiate impact effect at the point of impact
