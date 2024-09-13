@@ -31,4 +31,4 @@ public class Rotating : MonoBehaviour
             rotation -= 360;
         return Mathf.Clamp(rotation, -maxRotationX, maxRotationX);
     }
-}
+}   

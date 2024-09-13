@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public bool giant;
     public ParticleSystem killed; // ParticleSystem to play on death
     public GameObject particleEffectPrefab;
-
+    public AudioClip killsund;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
                 // Instantiate the ParticleSystem at the enemy's position and rotation
                 SpawnEffect();
+                AudioSource.PlayClipAtPoint(killsund, transform.position);
 
 
                 // Instantiate and play the particle system
