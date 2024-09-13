@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CameraSwitch : MonoBehaviour
     public Camera buyCam;
     private Camera activeCamera;
     public bool camswitched;
+    public bool inBuy;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class CameraSwitch : MonoBehaviour
                 camswitched = true;
                 SwitchCamera();
             }
-        }
+        }       
     }
 
 
@@ -42,6 +44,10 @@ public class CameraSwitch : MonoBehaviour
             buyCam.enabled = true;
             activeCamera = buyCam;
             camswitched = false;
+            Cursor.lockState= CursorLockMode.Confined;
+            inBuy = true;
+            
+            
         }
         else
         {
@@ -49,6 +55,9 @@ public class CameraSwitch : MonoBehaviour
             buyCam.enabled = false;
             activeCamera = playCam;
             camswitched = false;
+            Cursor.lockState = CursorLockMode.Locked;   
+            inBuy = false;
+            
         }
     }
 }

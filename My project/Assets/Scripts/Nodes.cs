@@ -9,11 +9,14 @@ public class Nodes : MonoBehaviour
     private Color startColor;
     private GameObject turret;
     public Vector3 positionOffset;
+    public CameraSwitch camswitch;
+    
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
+        
     }
 
     private void OnMouseDown()
@@ -24,8 +27,13 @@ public class Nodes : MonoBehaviour
             return;
         }
 
-        GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
-       turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+
+        if (camswitch.inBuy == true)
+        {
+            GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+            turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        }
+        
     }
 
 
