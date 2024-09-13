@@ -150,7 +150,7 @@ MonoBehaviour:
   giant: 0
   killed: {fileID: 2843615358675673141, guid: 6915f85684ff33a40a21f5b752a49450, type: 3}
   particleEffectPrefab: {fileID: 7925723148074563215, guid: 6915f85684ff33a40a21f5b752a49450, type: 3}
-  killsund: {fileID: 0}
+  killsund: {fileID: 8300000, guid: 96789b7b3bde5a243ae5a43ed51d9af1, type: 3}
 --- !u!114 &2556913088266627203
 MonoBehaviour:
   m_ObjectHideFlags: 0
