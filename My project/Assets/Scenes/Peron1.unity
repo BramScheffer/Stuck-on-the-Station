@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretToBuild: {fileID: 0}
-  standardTurretPrefab: {fileID: 8881649134983106138, guid: c5ae02ff472f8804b8c2d7b09fe9804e, type: 3}
+  standardTurretPrefab: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
 --- !u!4 &838866871 stripped
 Transform:
