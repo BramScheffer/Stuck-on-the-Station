@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -29,6 +30,8 @@ public class Turret : MonoBehaviour
     private int currentAmmo;
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
+    public AudioClip shotsound;
+    public CameraSwitch cam;
 
     void Start()
     {
@@ -73,47 +76,54 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        // Check ammo count
-        if (currentAmmo <= 0)
-            return;
-
-        ammo -= 1f;
-        currentAmmo--;
-
-        // Play muzzle flash effect
-        if (muzzleFlash != null)
+        if (!cam.inBuy)
         {
-            muzzleFlash.Play();
-        }
+            if (currentAmmo <= 0)
+                return;
 
-        // Perform the raycast
-        RaycastHit hit;
-        if (Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out hit, range))
-        {
-            // Debugging information
-            Debug.Log($"Hit: {hit.collider.name} at {hit.point}");
+            ammo -= 1f;
+            currentAmmo--;
+            AudioSource.PlayClipAtPoint(shotsound, transform.position);
 
-            // Apply damage to the target if it has a health component
-            if (hit.collider.CompareTag("Enemy"))
+            // Play muzzle flash effect
+            if (muzzleFlash != null)
             {
-                // Get the Enemy script from the hit object
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy != null)
+                muzzleFlash.Play();
+            }
+
+            // Perform the raycast
+            RaycastHit hit;
+            if (Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out hit, range))
+            {
+                // Debugging information
+                Debug.Log($"Hit: {hit.collider.name} at {hit.point}");
+
+                // Apply damage to the target if it has a health component
+                if (hit.collider.CompareTag("Enemy"))
                 {
-                    // Call the hit method on the enemy script
-                    enemy.hit(); // Pass the damage amount as needed
-                }
-                if (impactEffect != null)
-                {
-                    GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(impactGO, 2f); // Destroy the impact effect after 2 seconds
+                    // Get the Enemy script from the hit object
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
+                        // Call the hit method on the enemy script
+                        enemy.hit(); // Pass the damage amount as needed
+                    }
+                    if (impactEffect != null)
+                    {
+                        GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(impactGO, 2f); // Destroy the impact effect after 2 seconds
+                    }
                 }
             }
+            else
+            {
+                Debug.Log("Raycast did not hit anything.");
+            }
         }
-        else
-        {
-            Debug.Log("Raycast did not hit anything.");
-        }
+        
+
+        // Check ammo count
+       
     }
 
     IEnumerator Reload()

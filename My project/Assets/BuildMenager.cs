@@ -23,7 +23,7 @@ public class BuildMenager : MonoBehaviour
 
     private void Start()
     {
-
+        turretToBuild = standardTurretPrefab;
     }
     public GameObject GetTurretToBuild()
     {
