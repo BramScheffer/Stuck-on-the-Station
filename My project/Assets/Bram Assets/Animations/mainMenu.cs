@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
-
+    
     public Canvas main;
     public Canvas settings;
   public void PlayClicked()
@@ -18,6 +18,8 @@ public class mainMenu : MonoBehaviour
     {
         main.enabled = false;
         settings.enabled = true;
+
+        
     }
 
     public void OnApplicationQuit()
