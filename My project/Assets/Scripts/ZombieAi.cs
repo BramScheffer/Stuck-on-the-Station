@@ -5,20 +5,19 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    public Transform player; // Dit is waarschijnlijk de Tower
-    public List<Transform> turrets; // Alle Turrets in het level
-    private NavMeshAgent agent;
-    private Animator animator;
-    public float attackRange = 2f;
-    public bool geraakt;
+    public Transform player; // The Tower
+    public List<Transform> turrets; // All Turrets in the level
+    public float attackRange = 2.0f; // Range within which zombie attacks
+    public float attackCooldown = 1.5f; // Time between attacks
+    private float lastAttackTime;
 
-    private Transform currentTarget; // Het huidige doel van de zombie
+    private NavMeshAgent agent;
+    private Transform currentTarget; // The current target of the zombie
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-        UpdateTarget(); // Zoek het eerste doel
+        UpdateTarget(); // Find the first target
     }
 
     private void Update()
@@ -27,28 +26,32 @@ public class ZombieAI : MonoBehaviour
         {
             agent.destination = currentTarget.position;
 
-            // Controleer of de zombie binnen aanvalsbereik is van het huidige doel
+            // Check if the zombie is within attack range of the current target
             if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
             {
-                Attack();
+                // Attack only if cooldown has passed
+                if (Time.time > lastAttackTime + attackCooldown)
+                {
+                    Attack();
+                }
             }
         }
         else
         {
-            // Als er geen Turrets meer zijn, val de Tower aan
+            // If no Turrets remain, attack the Tower
             UpdateTarget();
         }
     }
 
     void UpdateTarget()
     {
-        // Zoek de dichtstbijzijnde Turret, als die er is
+        // Find the closest Turret, if any exist
         currentTarget = GetClosestTurret();
 
-        // Als er geen Turrets meer zijn, val de Tower aan
+        // If no Turrets remain, attack the Tower
         if (currentTarget == null)
         {
-            currentTarget = player; // De Tower wordt het doel
+            currentTarget = player; // The Tower becomes the target
         }
     }
 
@@ -57,9 +60,12 @@ public class ZombieAI : MonoBehaviour
         Transform closestTurret = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach (Transform turret in turrets)
+        // Iterate through the list of turrets
+        for (int i = turrets.Count - 1; i >= 0; i--)
         {
-            if (turret != null) // Zorg ervoor dat de Turret bestaat
+            Transform turret = turrets[i];
+
+            if (turret != null) // Ensure the turret exists
             {
                 float distanceToTurret = Vector3.Distance(transform.position, turret.position);
                 if (distanceToTurret < closestDistance)
@@ -68,6 +74,11 @@ public class ZombieAI : MonoBehaviour
                     closestTurret = turret;
                 }
             }
+            else
+            {
+                // Remove null entries from the list (i.e., destroyed turrets)
+                turrets.RemoveAt(i);
+            }
         }
 
         return closestTurret;
@@ -75,16 +86,26 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        animator.SetTrigger("Attack");
+        // Register the time of this attack
+        lastAttackTime = Time.time;
 
-        // Als de huidige target een Turret is, controleer of die vernietigd moet worden
+        // If the current target is a turret or the player, apply damage
         if (currentTarget != player && currentTarget != null)
         {
-            // Vernietig de turret of doe schade (afhankelijk van je gameplay systeem)
-            Destroy(currentTarget.gameObject);
+            Health targetHealth = currentTarget.GetComponent<Health>();
+            if (targetHealth != null)
+            {
+                targetHealth.TakeDamage(25f); // Apply damage to the turret or player
+            }
 
-            // Update het doel naar de volgende Turret of Tower
-            UpdateTarget();
+            // If the turret is destroyed (or health is <= 0), update the target
+            if (targetHealth == null || targetHealth.IsDead())
+            {
+                turrets.Remove(currentTarget); // Remove destroyed turret from the list
+                UpdateTarget(); // Update to the next closest turret or tower
+            }
         }
     }
+
+
 }
