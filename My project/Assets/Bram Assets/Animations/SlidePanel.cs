@@ -1,24 +1,76 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SlidePanelController : MonoBehaviour
+public class UIPanelFlyIn : MonoBehaviour
 {
-    public Animator panelAnimator; // The Animator attached to the sliding panel.
-    private bool isPanelVisible = false;
+    public RectTransform panel;         // RectTransform of the UI panel that needs to move
+    public Vector3 targetPosition;      // The target position where the panel should end up
+    public Button triggerButton;        // The button that triggers the animation
+    public float flyInSpeed = 2f;       // Speed at which the panel moves to the target position (lower value for smoothness)
+    public bool isPanelVisible = false; // Tracks whether the panel is currently visible or not
+    private Vector3 offScreenPosition;  // Start position of the panel (off-screen to the right)
+    private Coroutine movePanelCoroutine; // Reference to the currently running coroutine
 
-    // This method will be called when the button is pressed.
-    public void TogglePanel()
+    void Start()
     {
+        // Set the start position of the panel off-screen to the right (right side of the screen)
+        offScreenPosition = new Vector3(Screen.width, targetPosition.y, 0f);
+        panel.anchoredPosition = offScreenPosition;
+
+        // Add a listener to the trigger button
+        triggerButton.onClick.AddListener(TogglePanel);
+    }
+
+    void Update()
+    {
+        // Listen for the Escape key
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePanel();
+        }
+    }
+
+    void TogglePanel()
+    {
+        // Stop any current panel movement coroutine
+        if (movePanelCoroutine != null)
+        {
+            StopCoroutine(movePanelCoroutine);
+        }
+
         if (isPanelVisible)
         {
-            // Slide out to the left
-            panelAnimator.Play("SlideOut");
+            // Move the panel off-screen to the right
+            movePanelCoroutine = StartCoroutine(MovePanel(offScreenPosition));
         }
         else
         {
-            // Slide in from the right
-            panelAnimator.Play("SlideIn");
+            // Move the panel to the target position (left side or center)
+            movePanelCoroutine = StartCoroutine(MovePanel(targetPosition));
         }
-        // Toggle the panel visibility state
-        isPanelVisible = !isPanelVisible;
+
+        isPanelVisible = !isPanelVisible;  // Toggle the panel's visibility state
+    }
+
+    IEnumerator MovePanel(Vector3 destination)
+    {
+        float elapsedTime = 0f;          // Track time since movement started
+        Vector3 startingPosition = panel.anchoredPosition; // Initial position of the panel
+
+        while (elapsedTime < 1f)
+        {
+            // Interpolate the position using Lerp
+            panel.anchoredPosition = Vector3.Lerp(startingPosition, destination, elapsedTime);
+
+            // Increase elapsed time by the adjusted flyInSpeed
+            elapsedTime += Time.deltaTime * flyInSpeed;
+
+            yield return null;  // Wait for the next frame
+        }
+
+        // Ensure the panel exactly reaches the destination
+        panel.anchoredPosition = destination;
+        movePanelCoroutine = null;  // Reset the coroutine reference when done
     }
 }
