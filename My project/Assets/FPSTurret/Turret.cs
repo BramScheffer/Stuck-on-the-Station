@@ -88,7 +88,14 @@ public class Turret : MonoBehaviour
             // Play muzzle flash effect
             if (muzzleFlash != null)
             {
-                muzzleFlash.Play();
+                Debug.Log("Playing Muzzle Flash"); // Debugging log
+                muzzleFlash.Stop();    // Ensure the particle system is stopped
+                muzzleFlash.Clear();   // Clear any remaining particles
+                muzzleFlash.Play();    // Now play the particle system again
+            }
+            else
+            {
+                Debug.LogWarning("Muzzle Flash is not assigned!");
             }
 
             // Perform the raycast
