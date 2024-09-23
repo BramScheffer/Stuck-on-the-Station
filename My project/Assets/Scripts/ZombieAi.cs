@@ -10,6 +10,7 @@ public class ZombieAI : MonoBehaviour
     public float attackRange = 2.0f; // Range within which zombie attacks
     public float attackCooldown = 1.5f; // Time between attacks
     private float lastAttackTime;
+    public float attackdamage;
 
     private NavMeshAgent agent;
     private Transform currentTarget; // The current target of the zombie
@@ -95,7 +96,8 @@ public class ZombieAI : MonoBehaviour
             Health targetHealth = currentTarget.GetComponent<Health>();
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(25f); // Apply damage to the turret or player
+                Debug.Log("attacking enemy");
+                targetHealth.TakeDamage(attackdamage); // Apply damage to the turret or player
             }
 
             // If the turret is destroyed (or health is <= 0), update the target
