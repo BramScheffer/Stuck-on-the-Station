@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(health); // Prints health to the console
+     
     }
 
     public void hit()
@@ -56,6 +56,35 @@ public class Enemy : MonoBehaviour
 
             // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
             Destroy(impactGO, 2f);
+        }
+    }
+    public void turretHit()
+    {
+        {
+            hits += 1;
+            health -= 7;
+
+            {
+                if (health <= 0)
+                {
+                    Destroy(gameObject);
+                    // Instantiate the ParticleSystem at the enemy's position and rotation
+                    SpawnEffect();
+                    AudioSource.PlayClipAtPoint(killsund, transform.position);
+
+
+                    // Instantiate and play the particle system
+
+                }
+            }
+            void SpawnEffect()
+            {
+                // Instantiate the particle effect at the position and rotation of the GameObject this script is attached to
+                GameObject impactGO = Instantiate(particleEffectPrefab, transform.position, transform.rotation);
+
+                // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
+                Destroy(impactGO, 2f);
+            }
         }
     }
 }

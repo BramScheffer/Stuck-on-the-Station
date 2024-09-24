@@ -24,4 +24,9 @@ public class BuyMenu : MonoBehaviour
     {
         blman.Turrettower();
     }
+    public void BarbedWire()
+    {
+        blman.BarbedWire();
+    }
+
 }
