@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour
 {
-
+    public Win winSc;
     // The amount of energy to increase every second
     [Range(0f, 10f)] // This allows you to set a value between 0 and 10 in the Inspector
     public float energyIncreaseAmount = 0.15f;
@@ -34,6 +34,7 @@ public class EnergyManager : MonoBehaviour
         if (energy >= 100f)
         {
             train.transform.Translate(Vector3.forward * 5.0f * Time.deltaTime);
+            winSc.ShowCanvas();
         }
     }
 

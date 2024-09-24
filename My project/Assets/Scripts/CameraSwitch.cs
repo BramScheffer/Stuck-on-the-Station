@@ -60,4 +60,12 @@ public class CameraSwitch : MonoBehaviour
             
         }
     }
+    public void death()
+    {
+        playCam.enabled = false;
+        buyCam.enabled = true;
+        activeCamera = buyCam;
+        inBuy = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 }

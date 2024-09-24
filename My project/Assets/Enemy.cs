@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         {
             hits += 1;
-            health -= 7;
+            health -= 2;
 
             {
                 if (health <= 0)

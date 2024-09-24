@@ -3,7 +3,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f; // The maximum health value
-    private float currentHealth; // The current health
+    private float currentHealth; // The current health\
+    public LOSE losesc;
+    public CameraSwitch camswitch;
 
     private void Start()
     {
@@ -35,7 +37,8 @@ public class Health : MonoBehaviour
         Debug.Log($"{gameObject.name} has been destroyed!");
 
         // If you want to play an animation or sound before destruction, trigger it here
-
+        losesc.ShowCanvas();
+        camswitch.death();
         // Destroy the game object
         Destroy(gameObject); // You can replace this with deactivation if needed, like SetActive(false)
     }
