@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    public Transform player; // The Tower
+    public Transform trein; // The Tower
     public List<Transform> turrets; // All Turrets in the level
     public float attackRange = 2.0f; // Range within which zombie attacks
     public float attackCooldown = 1.5f; // Time between attacks
@@ -52,7 +52,7 @@ public class ZombieAI : MonoBehaviour
         // If no Turrets remain, attack the Tower
         if (currentTarget == null)
         {
-            currentTarget = player; // The Tower becomes the target
+            currentTarget = trein; // The Tower becomes the target
         }
     }
 
@@ -87,27 +87,37 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        // Register the time of this attack
+        // Registreer het moment van deze aanval
         lastAttackTime = Time.time;
 
-        // If the current target is a turret or the player, apply damage
-        if (currentTarget != player && currentTarget != null)
+        // Controleer of het huidige doelwit de trein (toren) is
+        if (currentTarget == trein)
+        {
+            Debug.Log("Probeer de toren aan te vallen...");
+            Health towerHealth = trein.GetComponent<Health>();
+            if (towerHealth != null)
+            {
+                Debug.Log("De toren neemt schade!");
+                towerHealth.TakeDamage(attackdamage); // Schade toebrengen aan de toren
+            }
+        }
+        // Als het huidige doelwit een turret is
+        else if (currentTarget != null)
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
             if (targetHealth != null)
             {
-                Debug.Log("attacking enemy");
-                targetHealth.TakeDamage(attackdamage); // Apply damage to the turret or player
+                Debug.Log("Aanval op een turret!");
+                targetHealth.TakeDamage(attackdamage); // Schade toebrengen aan de turret
             }
 
-            // If the turret is destroyed (or health is <= 0), update the target
+            // Als de turret vernietigd is, update het doelwit
             if (targetHealth == null || targetHealth.IsDead())
             {
-                turrets.Remove(currentTarget); // Remove destroyed turret from the list
-                UpdateTarget(); // Update to the next closest turret or tower
+                turrets.Remove(currentTarget); // Verwijder de vernietigde turret
+                UpdateTarget(); // Werk het doelwit bij
             }
         }
     }
-
 
 }

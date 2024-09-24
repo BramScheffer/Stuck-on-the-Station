@@ -372,15 +372,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e366afbac137a4ca90c99a51b99fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1010263472}
+  trein: {fileID: 1010263472}
   turrets:
   - {fileID: 878543478}
-  - {fileID: 1023527131}
-  - {fileID: 1517163388}
-  - {fileID: 852516849}
-  attackRange: 1
+  attackRange: 2.5
   attackCooldown: 1.5
-  attackdamage: 50
+  attackdamage: 5
 --- !u!65 &570052533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -424,11 +421,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!4 &570052543 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 018f6b2bf2d424241956a2a3ce443920, type: 3}
-  m_PrefabInstance: {fileID: 1717500787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &570052544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -905,50 +897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!1 &1023527124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-  m_PrefabInstance: {fileID: 1747663051}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1023527125
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023527124}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4849803, y: 1.5309622, z: 1.441319}
-  m_Center: {x: 0.00000014156103, y: -0.3335515, z: 0.28805116}
---- !u!114 &1023527126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023527124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ce04d0b44202a4485b337bccaba3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
---- !u!4 &1023527131 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-  m_PrefabInstance: {fileID: 1747663051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1268795933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,81 +1220,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 570052544}
   m_SourcePrefab: {fileID: 100100000, guid: 018f6b2bf2d424241956a2a3ce443920, type: 3}
---- !u!1001 &1747663051
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 789931091393527339, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 570052543}
-    - target: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_Name
-      value: autoturret
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7186667
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7836640595147238450, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8965874605810122880, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 570052543}
-    - target: {fileID: 8965874605810122880, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      propertyPath: findEnemy
-      value: 
-      objectReference: {fileID: 570052543}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1023527125}
-    - targetCorrespondingSourceObject: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1023527126}
-  m_SourcePrefab: {fileID: 100100000, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1360,4 +1233,3 @@ SceneRoots:
   - {fileID: 852516849}
   - {fileID: 1010263472}
   - {fileID: 1717500787}
-  - {fileID: 1747663051}
