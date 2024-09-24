@@ -10,6 +10,8 @@ public class Nodes : MonoBehaviour
     private GameObject turret;
     public Vector3 positionOffset;
     public CameraSwitch camswitch;
+    public bool Barbed;
+
 
     // Reference to the EnergyManager
     private EnergyManager energyManager;
@@ -39,9 +41,18 @@ public class Nodes : MonoBehaviour
 
         if (camswitch.inBuy)
         {
-            GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
-            turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-            energyManager.energyIncreaseAmount += 0.15f; // Increase energy amount
+            if (!Barbed && !BuildMenager.Instance.traps)
+            {
+                GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+                turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+                energyManager.energyIncreaseAmount += 0.15f; // Increase energy amount
+            }
+            if (Barbed && BuildMenager.Instance.traps)
+            {
+                GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+                turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+                turret.transform.Rotate(0, 90, 0);
+            }
         }
     }
 

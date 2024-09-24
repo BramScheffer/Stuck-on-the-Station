@@ -9,7 +9,7 @@ public class EnergyManager : MonoBehaviour
 
     // The amount of energy to increase every second
     [Range(0f, 10f)] // This allows you to set a value between 0 and 10 in the Inspector
-    public float energyIncreaseAmount = 1.0f;
+    public float energyIncreaseAmount = 0.15f;
 
     // Current energy level
     private float energy = 0.0f;
