@@ -11,7 +11,7 @@ public class mainMenu : MonoBehaviour
     public Canvas settings;
   public void PlayClicked()
     {
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Peron1");
     }
 
     public void SettingsClicked()

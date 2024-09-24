@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Bram Scene.unity
+    guid: 11929a43c2c3fa340b3f3cf91e7d0503
+  - enabled: 1
+    path: Assets/Scenes/Peron1.unity
+    guid: 78ae9b07f25e877468650b48cd7bd458
   m_configObjects: {}
