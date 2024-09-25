@@ -10,6 +10,7 @@ public class CameraSwitch : MonoBehaviour
     private Camera activeCamera;
     public bool camswitched;
     public bool inBuy;
+    public bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,29 +37,30 @@ public class CameraSwitch : MonoBehaviour
 
     public void SwitchCamera()
     {
-       
-        // Switch active camera
-        if (activeCamera == playCam)
+       if (!dead)
         {
-            playCam.enabled = false;
-            buyCam.enabled = true;
-            activeCamera = buyCam;
-            camswitched = false;
-            Cursor.lockState= CursorLockMode.Confined;
-            inBuy = true;
-            
-            
-        }
-        else
-        {
-            playCam.enabled = true;
-            buyCam.enabled = false;
-            activeCamera = playCam;
-            camswitched = false;
-            Cursor.lockState = CursorLockMode.Locked;   
-            inBuy = false;
-            
-        }
+            if (activeCamera == playCam)
+            {
+                playCam.enabled = false;
+                buyCam.enabled = true;
+                activeCamera = buyCam;
+                camswitched = false;
+                Cursor.lockState = CursorLockMode.Confined;
+                inBuy = true;
+
+
+            }
+            else
+            {
+                playCam.enabled = true;
+                buyCam.enabled = false;
+                activeCamera = playCam;
+                camswitched = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                inBuy = false;
+
+            }
+        }// Switch active camera     
     }
     public void death()
     {
@@ -67,5 +69,6 @@ public class CameraSwitch : MonoBehaviour
         activeCamera = buyCam;
         inBuy = false;
         Cursor.lockState = CursorLockMode.Confined;
+        dead = true;
     }
 }
