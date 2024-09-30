@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretToBuild: {fileID: 616205884}
-  standardTurretPrefab: {fileID: 7460924945235211912, guid: 4a9bb3459aa43194faaf896059db17f1, type: 3}
+  standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
   traps: 0
@@ -2986,7 +2986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 01e3772cc6fa55e4395f1be822ca0478, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.76
+      value: -37.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 01e3772cc6fa55e4395f1be822ca0478, type: 3}
       propertyPath: m_LocalRotation.w
