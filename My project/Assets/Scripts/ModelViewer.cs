@@ -11,7 +11,7 @@ public class ModelViewer : MonoBehaviour
     public Button prevButton;
     public Transform spawnPoint;
 
-    public Text descriptionText; // For UI Text (if using UnityEngine.UI)
+    public TMP_Text descriptionText; // For UI Text (if using UnityEngine.UI)
                                  // public TMP_Text descriptionText; // Uncomment this line if using TextMeshPro (TMP_Text)
 
     public string[] modelDescriptions; // Array to hold the text for each model
