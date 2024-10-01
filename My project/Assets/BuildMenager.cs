@@ -10,6 +10,7 @@ public class BuildMenager : MonoBehaviour
     public GameObject enrgieTowerPrefab;
     public GameObject barbedWirePrefab;
     public bool traps;
+    public bool energy;
 
 
     void Awake()
@@ -30,22 +31,24 @@ public class BuildMenager : MonoBehaviour
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
-
     }
     public void energietower()
     {
         turretToBuild = enrgieTowerPrefab;
         traps = false;
+        energy = true;
     }
     public void Turrettower()
     {
         turretToBuild = standardTurretPrefab;
         traps = false;
+        energy = false;
     }
     public void BarbedWire()
     { 
         traps = true;
         turretToBuild = barbedWirePrefab;
-        
+        energy = false;
+
     }
 }
