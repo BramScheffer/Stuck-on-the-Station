@@ -11,6 +11,7 @@ public class Nodes : MonoBehaviour
     public Vector3 positionOffset;
     public CameraSwitch camswitch;
     public bool Barbed;
+    public Money mn;
 
 
     // Reference to the EnergyManager
@@ -41,17 +42,36 @@ public class Nodes : MonoBehaviour
 
         if (camswitch.inBuy)
         {
-            if (!Barbed && !BuildMenager.Instance.traps)
+            if (!Barbed && !BuildMenager.Instance.traps && !BuildMenager.Instance.energy)
             {
-                GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
-                turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-                energyManager.energyIncreaseAmount += 0.15f; // Increase energy amount
+                if (mn.money >= 150f)
+                {
+                    GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+                    turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+                    mn.money -= 150f;
+                }
+               
             }
-            if (Barbed && BuildMenager.Instance.traps)
+            if (Barbed && BuildMenager.Instance.traps && !BuildMenager.Instance.energy)
             {
-                GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
-                turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-                turret.transform.Rotate(0, 90, 0);
+                if (mn.money >= 100f)
+                {
+
+                    GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+                    turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+                    turret.transform.Rotate(0, 90, 0);
+                    mn.money -= 100f;
+                }
+            }
+            if (!Barbed && !BuildMenager.Instance.traps && BuildMenager.Instance.energy)
+            {
+                if (mn.money >= 200f)
+                {
+                    GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
+                    turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+                    energyManager.energyIncreaseAmount += 0.15f; // Increase energy amount}
+                    mn.money -= 200f;
+                }
             }
         }
     }
