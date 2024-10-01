@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class UIPanelFlyIn : MonoBehaviour
 {
     public RectTransform panel;         // RectTransform of the UI panel that needs to move
-    public Vector3 targetPosition;      // The target position where the panel should end up
+    public Vector3 targetPosition;      // The target position where the panel should end up (on-screen)
     public Button triggerButton;        // The button that triggers the animation
+    public Button backButton;           // The "Back" button to trigger reverse animation
     public float flyInSpeed = 2f;       // Speed at which the panel moves to the target position (lower value for smoothness)
     public bool isPanelVisible = false; // Tracks whether the panel is currently visible or not
     private Vector3 offScreenPosition;  // Start position of the panel (off-screen to the right)
@@ -18,8 +19,9 @@ public class UIPanelFlyIn : MonoBehaviour
         offScreenPosition = new Vector3(Screen.width, targetPosition.y, 0f);
         panel.anchoredPosition = offScreenPosition;
 
-        // Add a listener to the trigger button
+        // Add listeners to the buttons
         triggerButton.onClick.AddListener(TogglePanel);
+        backButton.onClick.AddListener(ClosePanel);
     }
 
     void Update()
@@ -51,6 +53,20 @@ public class UIPanelFlyIn : MonoBehaviour
         }
 
         isPanelVisible = !isPanelVisible;  // Toggle the panel's visibility state
+    }
+
+    // Function to handle back button and reverse animation
+    void ClosePanel()
+    {
+        if (isPanelVisible)
+        {
+            if (movePanelCoroutine != null)
+            {
+                StopCoroutine(movePanelCoroutine);
+            }
+            movePanelCoroutine = StartCoroutine(MovePanel(offScreenPosition));
+            isPanelVisible = false;  // Set the panel as hidden after moving out
+        }
     }
 
     IEnumerator MovePanel(Vector3 destination)
