@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;  // Add this to use TextMeshPro
+using TMPro;  // Import TextMeshPro
 
 public class ResolutionSlider : MonoBehaviour
 {
-    public Slider resolutionSlider;    // The slider UI component
-    public TMP_Text resolutionLabel;   // TextMeshPro UI element to display the current resolution
-    private Resolution[] resolutions;  // Array to store available screen resolutions
+    public Slider resolutionSlider;       // The slider UI component
+    public TMP_Text resolutionLabel;      // TextMeshPro UI element to display the current resolution
+    public Button applyButton;            // Button to apply the resolution change
+    private Resolution[] resolutions;     // Array to store available screen resolutions
+    private Resolution selectedResolution; // The currently selected resolution
 
     void Start()
     {
@@ -25,22 +27,23 @@ public class ResolutionSlider : MonoBehaviour
             {
                 resolutionSlider.value = i;
                 UpdateResolutionLabel(i);
+                selectedResolution = resolutions[i]; // Set default selected resolution
                 break;
             }
         }
 
         // Add a listener to handle slider value changes
         resolutionSlider.onValueChanged.AddListener(delegate { OnResolutionChange(); });
+
+        // Add listener for apply button click
+        applyButton.onClick.AddListener(ApplyResolution);
     }
 
     // This function is called when the slider value changes
     void OnResolutionChange()
     {
         int index = Mathf.RoundToInt(resolutionSlider.value);  // Get the rounded slider value as the index
-        Resolution selectedResolution = resolutions[index];    // Get the corresponding resolution
-
-        // Set the screen resolution to the selected resolution
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+        selectedResolution = resolutions[index];               // Store the selected resolution (but don't apply it yet)
 
         // Update the displayed resolution label
         UpdateResolutionLabel(index);
@@ -50,5 +53,15 @@ public class ResolutionSlider : MonoBehaviour
     void UpdateResolutionLabel(int index)
     {
         resolutionLabel.text = resolutions[index].width + " x " + resolutions[index].height;
+    }
+
+    // Applies the selected resolution when the "Apply" button is pressed
+    void ApplyResolution()
+    {
+        // Set the screen resolution to the selected resolution
+        Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+
+        // Optionally, give feedback to the user that the resolution has been applied
+        Debug.Log("Resolution applied: " + selectedResolution.width + " x " + selectedResolution.height);
     }
 }
