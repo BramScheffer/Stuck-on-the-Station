@@ -6,6 +6,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
+using TMPro;
 
 public class Turret : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Turret : MonoBehaviour
     private bool isReloading = false;
     public AudioClip shotsound;
     public CameraSwitch cam;
+    public TMP_Text ammoCount;
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
+        ammoCount.text = string.Format("{0}/50", currentAmmo);
         // Check if currently reloading
         if (isReloading)
             return;
