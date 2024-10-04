@@ -44,11 +44,11 @@ public class Nodes : MonoBehaviour
         {
             if (!Barbed && !BuildMenager.Instance.traps && !BuildMenager.Instance.energy)
             {
-                if (mn.money >= 150f)
+                if (mn.money >= 200f)
                 {
                     GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
                     turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-                    mn.money -= 150f;
+                    mn.money -= 200;
                 }
                
             }
@@ -59,18 +59,17 @@ public class Nodes : MonoBehaviour
 
                     GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
                     turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-                    turret.transform.Rotate(0, 90, 0);
                     mn.money -= 100f;
                 }
             }
             if (!Barbed && !BuildMenager.Instance.traps && BuildMenager.Instance.energy)
             {
-                if (mn.money >= 200f)
+                if (mn.money >= 150f)
                 {
                     GameObject turretToBuild = BuildMenager.Instance.GetTurretToBuild();
                     turret = Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
                     energyManager.energyIncreaseAmount += 0.15f; // Increase energy amount}
-                    mn.money -= 200f;
+                    mn.money -= 150;
                 }
             }
         }

@@ -14,6 +14,7 @@ public class ZombieAI : MonoBehaviour
 
     private NavMeshAgent agent;
     private Transform currentTarget; // The current target of the zombie
+    
 
     private void Start()
     {

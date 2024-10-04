@@ -22,7 +22,7 @@ public class Money : MonoBehaviour
     }
     public void SmallZombie()
     {
-        money += 10f;
+        money += 15;
     }
     public void BigZombie()
     {

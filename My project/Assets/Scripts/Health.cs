@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using System.Security.Cryptography;
 
 public class Health : MonoBehaviour
 {
@@ -6,6 +8,8 @@ public class Health : MonoBehaviour
     private float currentHealth; // The current health\
     public LOSE losesc;
     public CameraSwitch camswitch;
+    public TMP_Text healthTxt;
+
 
     private void Start()
     {
@@ -41,5 +45,9 @@ public class Health : MonoBehaviour
         camswitch.death();
         // Destroy the game object
         Destroy(gameObject); // You can replace this with deactivation if needed, like SetActive(false)
+    }
+    private void Update()
+    {
+        healthTxt.text = currentHealth.ToString();
     }
 }

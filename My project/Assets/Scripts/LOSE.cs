@@ -18,7 +18,7 @@ public class LOSE : MonoBehaviour
     }
     public void restart()
     {
-        SceneManager.LoadScene("Peron1");
+        SceneManager.LoadScene("Level1");
     }
     public void ShowCanvas()
     {
