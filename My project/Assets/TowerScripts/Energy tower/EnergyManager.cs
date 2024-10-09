@@ -1,15 +1,10 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class EnergyManager : MonoBehaviour
 {
     public Win winSc;
+
     // The amount of energy to increase every second
     [Range(0f, 10f)] // This allows you to set a value between 0 and 10 in the Inspector
     public float energyIncreaseAmount = 0.15f;
@@ -25,27 +20,33 @@ public class EnergyManager : MonoBehaviour
     public float maxEnergy = 100f;
     public float currentEnergy = 100f;
 
-    public EnergyBarUI energyBarUI;  // Verwijzing naar de UI scrip
+    public EnergyBarUI energyBarUI;  // Reference to the first energy bar UI
+    public EnergyBarUI Lightning;    // Reference to the second energy bar UI (Lightning)
 
     // Update is called once per frame
     void Update()
     {
-
-        currentEnergy -= Time.deltaTime * 5f; // Energie loopt langzaam af
+        currentEnergy -= Time.deltaTime * 5f; // Energy slowly drains over time
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
 
-        // Bereken energiepercentage en update de energiebar
+        // Calculate energy percentage
         float energyPercent = energy / maxEnergy;
+
+        // Update both energy bar images with the same percentage
         energyBarUI.UpdateEnergyBar(energyPercent);
-        // Increase timer by the time since the last frame
+        Lightning.UpdateEnergyBar(energyPercent);
+
+        // Increase the timer by the time since the last frame
         timer += Time.deltaTime;
 
         // Check if one second has passed
         if (timer >= 1.0f)
         {
             IncreaseEnergy();
-            timer = 0.0f; // Reset timer
+            timer = 0.0f; // Reset the timer
         }
+
+        // When energy is full, the train moves and a win is triggered
         if (energy >= 100f)
         {
             train.transform.Translate(Vector3.forward * 5.0f * Time.deltaTime);

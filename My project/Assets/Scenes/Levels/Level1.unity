@@ -11974,6 +11974,7 @@ MonoBehaviour:
   maxEnergy: 100
   currentEnergy: 100
   energyBarUI: {fileID: 869763737}
+  Lightning: {fileID: 0}
 --- !u!4 &1304720624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb179c1c5a73e043bf24a8747c74fcc, type: 3}
@@ -18787,7 +18788,8 @@ PrefabInstance:
       value: -386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2512146343198343795, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7017704187425797140, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       insertIndex: -1
