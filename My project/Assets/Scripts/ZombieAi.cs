@@ -9,13 +9,13 @@ public class ZombieAI : MonoBehaviour
     public List<Transform> turrets;
     public float attackRange = 2.0f;
     public float attackCooldown = 1.5f;
-    private float lastAttackTime;
+    public float lastAttackTime; // Nu public
     public float attackdamage;
 
     public float speed = 3.5f;
 
-    private NavMeshAgent agent;
-    private Transform currentTarget;
+    public NavMeshAgent agent; // Maak public als het nodig is
+    public Transform currentTarget; // Nu public
 
     private void Start()
     {
