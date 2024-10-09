@@ -67,13 +67,6 @@ public class HealthTest : MonoBehaviour
         {
             Debug.LogWarning("Health Text is not assigned!");
         }
-        void TakeDamage(float amount)
-        {
-            Debug.Log($"{gameObject.name} is taking damage: {amount}"); // Debug log om te zien of de methode wordt aangeroepen
-            currentHealth -= amount; // Reduce the current health by the damage amount
-            Debug.Log($"{gameObject.name} took {amount} damage, remaining health: {currentHealth}");
-
-
-        }
+        
     }
 }
