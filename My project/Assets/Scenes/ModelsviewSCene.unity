@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 497336433}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.009826544, g: 0.009382042, b: 0.009381483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -729,7 +729,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1137255, g: 0.10980393, b: 0.10980393, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1557,10 +1557,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9716981, g: 0.967692, b: 0.8204432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 25
-  m_SpotAngle: 119.6
+  m_SpotAngle: 99
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -1617,7 +1617,7 @@ Transform:
   m_GameObject: {fileID: 1286326323}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 15.54, y: 7.21, z: -24.39}
+  m_LocalPosition: {x: 14.74, y: 7.21, z: -24.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1800,39 +1800,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabModels:
-  - {fileID: 4418329639164626813, guid: 658f86b40f6657c41b2c170fe3ed1da5, type: 3}
+  - {fileID: 919132149155446097, guid: 834e4dfe5e66bc0469a66735bba45592, type: 3}
   - {fileID: 4785523917919551454, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
   - {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
-  - {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
-  - {fileID: 940693502615187902, guid: 88219fad092db23468e097adde7fcaf8, type: 3}
+  - {fileID: 3995371017219645277, guid: ac37e134a8caead4e901b7c4d01425d3, type: 3}
+  - {fileID: 4196181359565913775, guid: 2f6c712f8aafbc14793865888fc47251, type: 3}
+  - {fileID: 4033219242461154498, guid: d7afca9da5704c5458ac11f030402f14, type: 3}
   - {fileID: 7629830409493578273, guid: 5398e7aa0f464ee48b17891cb00c89a6, type: 3}
   - {fileID: 4969170076976188381, guid: e133a2ef8d0374a4fb35fda2b816c3fa, type: 3}
   - {fileID: 3134462927463743330, guid: 4a68ef7adb21c424cb165209deee93d1, type: 3}
-  - {fileID: 919132149155446097, guid: d64e44edc5f24a84ca940c0099c9df6c, type: 3}
-  - {fileID: 5105586263828150866, guid: 0a07403a1de17744eb4c19fadf6a6219, type: 3}
-  - {fileID: 7753847861374735668, guid: 7cf5b207f33e0084bab20310c2b11c6b, type: 3}
   - {fileID: 8806529945612992437, guid: 0b5dafd913eb1144a9492d9dbf5915a6, type: 3}
-  - {fileID: 7428327968651473296, guid: 6df234d9a0424b74d9ef795b0f42b7e0, type: 3}
-  - {fileID: 588639265918954224, guid: 24cddc4b4865c8241bc24288867d9b06, type: 3}
   nextButton: {fileID: 1987625571}
   prevButton: {fileID: 912723995}
   spawnPoint: {fileID: 1656504759}
   descriptionText: {fileID: 1901275337}
   modelDescriptions:
   - ' Press The ">" button'
-  - 'Model Made By: Finn          This is the turret the player usses to shoot the
+  - 'Model Made By: Finn          This is the turret the player uses to shoot the
     zombies'
   - 'Model Made By: Finn          This is the turret the player can place down'
-  - 'Model Made By: Finn           This is the enrgy pole use it to charge the train'
+  - 'Model Made By: Finn           This is the energy pole use it to charge the train'
+  - 'Model Made By: Joey'
   - 'Model Made By: Joey'
   - 'Model Made By: Bram'
   - 'Model Made By: Bram'
   - 'Model Made By: Bram'
-  - 'Model Made By: Bram'
-  - 'Model Made By: Finn'
-  - 'Model Made By: Finn'
-  - 'Model Made By: Finn'
-  - 'Model Made By: Finn'
   - 'Model Made By: Finn'
   rotationSpeed: 50
 --- !u!4 &1656504759
@@ -2049,8 +2041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -183.28906, y: -123.67938}
-  m_SizeDelta: {x: 366.57812, y: 247.35876}
+  m_AnchoredPosition: {x: -183.28906, y: -102.20001}
+  m_SizeDelta: {x: 366.58, y: 204.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1907823300
 GameObject:
@@ -2080,7 +2072,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9716981, g: 0.967692, b: 0.8204432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 25
   m_SpotAngle: 119.6
@@ -2140,7 +2132,7 @@ Transform:
   m_GameObject: {fileID: 1907823300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.54, y: 1.99, z: -38.02}
+  m_LocalPosition: {x: 14.74, y: 1.99, z: -31.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

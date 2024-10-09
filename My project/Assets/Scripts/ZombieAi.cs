@@ -13,6 +13,8 @@ public class ZombieAI : MonoBehaviour
     public float attackdamage;
 
     public float speed = 3.5f;
+    public float slowedSpeed = 1.5f; // Speed when hit by barbed trap
+    public float slowDuration = 10.0f; // Duration for slow effect
 
     public NavMeshAgent agent; // Maak public als het nodig is
     public Transform currentTarget; // Nu public
@@ -108,4 +110,25 @@ public class ZombieAI : MonoBehaviour
             }
         }
     }
+
+    public void BarbedHit()
+    {
+        StartCoroutine(ApplySlowEffect());
+    }
+
+    IEnumerator ApplySlowEffect()
+    {
+        // Store the original speed
+        float originalSpeed = agent.speed;
+
+        // Apply the slowed speed
+        agent.speed = slowedSpeed;
+
+        // Wait for the duration of the slow effect
+        yield return new WaitForSeconds(slowDuration);
+
+        // Reset the speed back to the original speed
+        agent.speed = originalSpeed;
+    }
 }
+

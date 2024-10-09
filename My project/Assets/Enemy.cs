@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -105,6 +106,7 @@ public class Enemy : MonoBehaviour
                 // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
                 Destroy(impactGO, 2f);
             }
+            
         }
     }
 }
