@@ -1,8 +1,11 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class EnergyManager : MonoBehaviour
 {
@@ -19,9 +22,21 @@ public class EnergyManager : MonoBehaviour
 
     public GameObject train;
 
+    public float maxEnergy = 100f;
+    public float currentEnergy = 100f;
+
+    public EnergyBarUI energyBarUI;  // Verwijzing naar de UI scrip
+
     // Update is called once per frame
     void Update()
     {
+
+        currentEnergy -= Time.deltaTime * 5f; // Energie loopt langzaam af
+        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+
+        // Bereken energiepercentage en update de energiebar
+        float energyPercent = energy / maxEnergy;
+        energyBarUI.UpdateEnergyBar(energyPercent);
         // Increase timer by the time since the last frame
         timer += Time.deltaTime;
 

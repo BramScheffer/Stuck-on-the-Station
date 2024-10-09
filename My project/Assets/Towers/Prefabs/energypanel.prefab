@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2ac5effa8f308349a719d88c259378d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5330522
+      value: -0.9713762
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2ac5effa8f308349a719d88c259378d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21486521
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2ac5effa8f308349a719d88c259378d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.83
+      value: -5.231098
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2ac5effa8f308349a719d88c259378d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -93,3 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27095193a2ec53843bc255b7357a4566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winSc: {fileID: 0}
+  energyIncreaseAmount: 0.15
+  train: {fileID: 0}
+  maxEnergy: 100
+  currentEnergy: 0
+  energyBarUI: {fileID: 0}
