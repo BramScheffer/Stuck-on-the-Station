@@ -15,6 +15,10 @@ public class TowerTurret : MonoBehaviour
     public float projectileSpeed = 20f; // Speed of the projectile
     private float nextFireTime = 0f; // Time until the next shot is allowed
 
+    // New fields for particle and sound
+    public ParticleSystem muzzleFlash; // Particle system for firing
+    public AudioSource fireSound; // Audio source for the firing sound
+
     // Update is called once per frame
     void Update()
     {
@@ -58,6 +62,18 @@ public class TowerTurret : MonoBehaviour
         }
 
         // Optionally, you can destroy the projectile after a certain time
-        Destroy(projectile, 7f); // Destroy the projectile after 5 seconds to clean up
+        Destroy(projectile, 7f); // Destroy the projectile after 7 seconds to clean up
+
+        // Play the muzzle flash particle effect
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play(); // Play the muzzle flash particle system at the fire point
+        }
+
+        // Play the firing sound
+        if (fireSound != null)
+        {
+            fireSound.Play(); // Trigger the sound effect
+        }
     }
 }
