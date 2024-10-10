@@ -9,6 +9,7 @@ public class Win : MonoBehaviour
     void Start()
     {
        wincond.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -24,5 +25,8 @@ public class Win : MonoBehaviour
     {
        wincond.SetActive(true);
     }
-
+    public void NextStation()
+    {
+        SceneManager.LoadScene("Level1 2");
+    }
 }

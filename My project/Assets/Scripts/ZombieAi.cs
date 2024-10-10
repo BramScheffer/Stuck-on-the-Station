@@ -14,7 +14,7 @@ public class ZombieAI : MonoBehaviour
 
     public float speed = 3.5f;
     public float slowedSpeed = 1.5f; // Speed when hit by barbed trap
-    public float slowDuration = 10.0f; // Duration for slow effect
+    public float slowDuration = 3f; // Duration for slow effect
 
     public NavMeshAgent agent; // Maak public als het nodig is
     public Transform currentTarget; // Nu public
