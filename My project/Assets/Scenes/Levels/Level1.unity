@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231585, b: 0.009772198, a: 1}
+  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231583, b: 0.009772198, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3808,68 +3808,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d942d80aa737bef4cbed018eab61c4e7, type: 3}
---- !u!1001 &363554418
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1933723763}
-    m_Modifications:
-    - target: {fileID: 376037074664854369, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_Name
-      value: Energy Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
---- !u!4 &363554419 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 866785589114535997, guid: 0fa1b3cbdd338624fb8ca5a86305fb27, type: 3}
-  m_PrefabInstance: {fileID: 363554418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &367966537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11972,9 +11910,8 @@ MonoBehaviour:
   energyIncreaseAmount: 0.15
   train: {fileID: 941901560}
   maxEnergy: 100
-  currentEnergy: 100
+  currentEnergy: 0
   energyBarUI: {fileID: 869763737}
-  Lightning: {fileID: 0}
 --- !u!4 &1304720624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb179c1c5a73e043bf24a8747c74fcc, type: 3}
@@ -18667,6 +18604,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -386
       objectReference: {fileID: 0}
+    - target: {fileID: 3673925144305339563, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673925144305339563, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673925144305339563, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 6731518384008432540, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.63936
@@ -18681,7 +18630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6731518384008432540, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62.9
+      value: 62.899902
       objectReference: {fileID: 0}
     - target: {fileID: 6731518384008432540, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18790,20 +18739,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2512146343198343795, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7017704187425797140, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 363554419}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 76627697488385023, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1933723764}
   m_SourcePrefab: {fileID: 100100000, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
---- !u!224 &1933723763 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7017704187425797140, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-  m_PrefabInstance: {fileID: 1933723762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1933723764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22857,9 +22798,9 @@ SceneRoots:
   - {fileID: 1913251308}
   - {fileID: 696461391}
   - {fileID: 1772221379}
+  - {fileID: 1388418151}
   - {fileID: 1390813168}
   - {fileID: 1200427758}
-  - {fileID: 1388418151}
   - {fileID: 1771343135}
   - {fileID: 1814448853}
   - {fileID: 4552662641040632312}

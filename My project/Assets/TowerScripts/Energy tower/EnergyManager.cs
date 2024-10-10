@@ -21,7 +21,7 @@ public class EnergyManager : MonoBehaviour
     public float currentEnergy = 100f;
 
     public EnergyBarUI energyBarUI;  // Reference to the first energy bar UI
-    public EnergyBarUI Lightning;    // Reference to the second energy bar UI (Lightning)
+    
 
     // Update is called once per frame
     void Update()
@@ -34,7 +34,7 @@ public class EnergyManager : MonoBehaviour
 
         // Update both energy bar images with the same percentage
         energyBarUI.UpdateEnergyBar(energyPercent);
-        Lightning.UpdateEnergyBar(energyPercent);
+        
 
         // Increase the timer by the time since the last frame
         timer += Time.deltaTime;
