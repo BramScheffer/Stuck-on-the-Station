@@ -55,38 +55,27 @@ public class ModelViewer : MonoBehaviour
         }
     }
 
-    public void NextModel()
+    void NextModel()
     {
         if (currentIndex < prefabModels.Length - 1)
         {
-            // Disable the button to prevent multiple clicks
-            nextButton.interactable = false;
-
             currentIndex++;
             SpawnModel(currentIndex);
             UpdateButtonStates();
-
-            // Enable the button again after a short delay
-            StartCoroutine(EnableNextButton());
         }
     }
 
-    private IEnumerator EnableNextButton()
-    {
-        yield return new WaitForSeconds(0.2f); // Adjust the delay as needed
-        nextButton.interactable = true; // Re-enable the next button
-    }
-    public void PreviousModel()
+    void PreviousModel()
     {
         if (currentIndex > 0)
         {
-            currentIndex-=1 ;
+            currentIndex--;
             SpawnModel(currentIndex);
             UpdateButtonStates();
         }
     }
 
-     void SpawnModel(int index)
+    void SpawnModel(int index)
     {
         if (currentModel != null)
         {
@@ -108,7 +97,7 @@ public class ModelViewer : MonoBehaviour
         }
     }
 
-     void UpdateButtonStates()
+    void UpdateButtonStates()
     {
         prevButton.interactable = currentIndex > 0;
         nextButton.interactable = currentIndex < prefabModels.Length - 1;
