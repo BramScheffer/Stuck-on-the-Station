@@ -1,20 +1,20 @@
 using System.Collections;
 using UnityEngine;
-using TMPro; // Include the TextMeshPro namespace
+using TMPro;
 
 public class TextFade : MonoBehaviour
 {
-    public TextMeshProUGUI text; // Use TextMeshProUGUI for UI text
-    public float fadeDuration = 1.0f;
+    public TextMeshProUGUI text; // Reference to the TextMeshProUGUI component
+    public float fadeDuration = 1.0f; // Duration of the fade effect
 
-    void Start()
+    void OnEnable()
     {
-        // Set the alpha of the text to 0 (fully transparent)
+        // When the GameObject is enabled, start with fully transparent text
         Color color = text.color;
         color.a = 0;
         text.color = color;
 
-        // Start the fade-in coroutine
+        // Start fading in the text
         StartCoroutine(FadeTextIn());
     }
 
