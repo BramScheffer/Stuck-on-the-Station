@@ -51,7 +51,6 @@ public class EnergyManager : MonoBehaviour
         {
             train.transform.Translate(Vector3.forward * 5.0f * Time.deltaTime);
             winSc.ShowCanvas();
-            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 
