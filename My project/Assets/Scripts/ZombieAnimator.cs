@@ -25,13 +25,10 @@ public class ZombieAnimator : MonoBehaviour
             SetWalking(false);
         }
 
-        if (zombieAI.currentTarget != null &&
-            Vector3.Distance(transform.position, zombieAI.currentTarget.position) <= zombieAI.attackRange)
+        // Controleer of de zombie aan het aanvallen is
+        if (zombieAI.isAttacking) // Gebruik de nieuwe isAttacking variabele
         {
-            if (Time.time > zombieAI.lastAttackTime + zombieAI.attackCooldown)
-            {
-                SetAttack();
-            }
+            SetAttack();
         }
     }
 
