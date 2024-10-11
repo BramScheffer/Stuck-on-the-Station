@@ -17,6 +17,8 @@ public class SpawnerScript : MonoBehaviour
         public int object1Count; // Number of Object1 to spawn
         public int object2Count; // Number of Object2 to spawn
         public int countdown; // Countdown timer before the next round can start
+        public Transform[] object1SpawnPoints; // Specific spawn points for Object1
+        public Transform[] object2SpawnPoints; // Specific spawn points for Object2
     }
 
     // Array to hold the sequence of spawn instructions
@@ -24,16 +26,6 @@ public class SpawnerScript : MonoBehaviour
 
     // Time interval between spawns
     public float spawnInterval = 2f;
-
-    // Reference to the plane where objects should spawn
-    public Transform spawnPlane;
-
-    // Range of random position within the XZ area of the plane
-    public float spawnRangeX = 5f;
-    public float spawnRangeZ = 5f;
-
-    // Fixed Y position (the height of the plane)
-    public float planeY = 0f;
 
     // Flag to control if spawning is enabled
     public bool spawnEnabled = true;
@@ -58,17 +50,23 @@ public class SpawnerScript : MonoBehaviour
             // Get the current spawn instruction
             SpawnInstruction currentInstruction = spawnSequence[currentRoundIndex];
 
-            // Spawn Object1 specified times
+            // Spawn Object1 specified times at its corresponding spawn points
             for (int i = 0; i < currentInstruction.object1Count; i++)
             {
-                SpawnObject(SpawnObjectType.Object1);
+                if (i < currentInstruction.object1SpawnPoints.Length)
+                {
+                    SpawnObject(SpawnObjectType.Object1, currentInstruction.object1SpawnPoints[i]);
+                }
                 yield return new WaitForSeconds(spawnInterval);
             }
 
-            // Spawn Object2 specified times
+            // Spawn Object2 specified times at its corresponding spawn points
             for (int i = 0; i < currentInstruction.object2Count; i++)
             {
-                SpawnObject(SpawnObjectType.Object2);
+                if (i < currentInstruction.object2SpawnPoints.Length)
+                {
+                    SpawnObject(SpawnObjectType.Object2, currentInstruction.object2SpawnPoints[i]);
+                }
                 yield return new WaitForSeconds(spawnInterval);
             }
 
@@ -90,29 +88,32 @@ public class SpawnerScript : MonoBehaviour
         }
     }
 
-    // Function to spawn objects on the plane
-    void SpawnObject(SpawnObjectType objectToSpawnType)
+    // Function to spawn objects at specific spawn points
+    void SpawnObject(SpawnObjectType objectToSpawnType, Transform spawnPoint)
     {
-        // Randomize X and Z coordinates within the defined range
-        float randomX = Random.Range(-spawnRangeX, spawnRangeX);
-        float randomZ = Random.Range(-spawnRangeZ, spawnRangeZ);
-
-        // Set spawn position on the plane (keeping Y at the plane height)
-        Vector3 spawnPosition = new Vector3(
-            spawnPlane.position.x + randomX,
-            planeY,  // This keeps the object at the plane's Y level
-            spawnPlane.position.z + randomZ
-        );
-
-        // Spawn the object based on the specified type
-        switch (objectToSpawnType)
+        // Ensure that the spawn point is valid
+        if (spawnPoint != null)
         {
-            case SpawnObjectType.Object1:
-                Instantiate(objectToSpawn1, spawnPosition, Quaternion.identity);
-                break;
-            case SpawnObjectType.Object2:
-                Instantiate(objectToSpawn2, spawnPosition, Quaternion.identity);
-                break;
+            Vector3 spawnPosition = new Vector3(
+                spawnPoint.position.x,
+                spawnPoint.position.y, // Use the Y from the spawn point
+                spawnPoint.position.z
+            );
+
+            // Spawn the object based on the specified type
+            switch (objectToSpawnType)
+            {
+                case SpawnObjectType.Object1:
+                    Instantiate(objectToSpawn1, spawnPosition, Quaternion.identity);
+                    break;
+                case SpawnObjectType.Object2:
+                    Instantiate(objectToSpawn2, spawnPosition, Quaternion.identity);
+                    break;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Spawn point is not assigned!");
         }
     }
 
