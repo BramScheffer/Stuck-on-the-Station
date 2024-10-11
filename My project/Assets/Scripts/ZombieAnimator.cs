@@ -25,20 +25,29 @@ public class ZombieAnimator : MonoBehaviour
             SetWalking(false);
         }
 
-        // Controleer of de zombie aan het aanvallen is
-        if (zombieAI.isAttacking) // Gebruik de nieuwe isAttacking variabele
+        // Only trigger attack if zombie is close enough and not already attacking
+        if (zombieAI.currentTarget != null && zombieAI.IsWithinAttackRange() && !zombieAI.isAttacking)
         {
             SetAttack();
         }
     }
 
-    private void SetWalking(bool isWalking)
+    // Trigger walking animation
+    public void SetWalking(bool isWalking)
     {
         animator.SetBool("isWalking", isWalking);
     }
 
-    private void SetAttack()
+    // Trigger attack animation
+    public void SetAttack()
     {
         animator.SetTrigger("isAttacking");
+        zombieAI.StartAttack(); // Tell ZombieAI to start attack logic
+    }
+
+    // Called from animation event
+    public void OnAttackHit()
+    {
+        zombieAI.ApplyDamage(); // Apply the damage during the impact frame of the animation
     }
 }
