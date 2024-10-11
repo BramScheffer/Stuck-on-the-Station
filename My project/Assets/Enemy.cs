@@ -109,4 +109,8 @@ public class Enemy : MonoBehaviour
             
         }
     }
+    public void Explosion()
+    {
+        health -= 100;
+    }
 }

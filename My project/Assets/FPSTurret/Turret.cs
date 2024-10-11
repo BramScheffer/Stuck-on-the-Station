@@ -1,4 +1,3 @@
-
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -75,6 +74,11 @@ public class Turret : MonoBehaviour
         {
             empty = false;
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
+
     }
 
     void Shoot()
@@ -124,16 +128,17 @@ public class Turret : MonoBehaviour
                         Destroy(impactGO, 2f); // Destroy the impact effect after 2 seconds
                     }
                 }
+
             }
             else
             {
                 Debug.Log("Raycast did not hit anything.");
             }
         }
-        
+
 
         // Check ammo count
-       
+
     }
 
     IEnumerator Reload()

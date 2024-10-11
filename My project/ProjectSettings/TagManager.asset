@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Gastank
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Enemy
   - Floor
   - Navmeshobj
-  - 
-  - 
+  - Bullet
+  - Gastank
   - 
   - 
   - 
