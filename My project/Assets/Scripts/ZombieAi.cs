@@ -67,6 +67,8 @@ public class ZombieAI : MonoBehaviour
                 targetHealth.TakeDamage(attackDamage); // Deal damage
                 if (targetHealth.IsDead())
                 {
+                    // If the target is dead, destroy it and switch targets
+                    Destroy(currentTarget.gameObject); // Destroy the current turret
                     turrets.Remove(currentTarget); // Remove dead turret
                     UpdateTarget(); // Update the target to the next one
                 }
@@ -85,7 +87,13 @@ public class ZombieAI : MonoBehaviour
     // Update the target to the closest turret or train
     void UpdateTarget()
     {
-        currentTarget = GetClosestTurret() ?? trein; // Set target to the closest turret or train
+        currentTarget = GetClosestTurret();
+
+        // If no turrets are available, switch to the train
+        if (currentTarget == null)
+        {
+            currentTarget = trein;
+        }
     }
 
     // Find the closest turret
@@ -94,13 +102,19 @@ public class ZombieAI : MonoBehaviour
         Transform closestTurret = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach (Transform turret in turrets)
+        for (int i = turrets.Count - 1; i >= 0; i--)
         {
-            float distanceToTurret = Vector3.Distance(transform.position, turret.position);
+            if (turrets[i] == null) // Handle any destroyed turrets
+            {
+                turrets.RemoveAt(i);
+                continue;
+            }
+
+            float distanceToTurret = Vector3.Distance(transform.position, turrets[i].position);
             if (distanceToTurret < closestDistance)
             {
-                closestDistance = distanceToTurret; // Update closest distance
-                closestTurret = turret; // Update closest turret
+                closestDistance = distanceToTurret;
+                closestTurret = turrets[i];
             }
         }
 

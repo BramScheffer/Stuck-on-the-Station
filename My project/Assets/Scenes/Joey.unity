@@ -967,13 +967,13 @@ MonoBehaviour:
   trein: {fileID: 1010263472}
   turrets:
   - {fileID: 878543478}
-  attackRange: 2
-  attackDamage: 0
+  attackRange: 1
+  attackDamage: 100
   speed: 1.5
   slowedSpeed2: 0
   slowDuration2: 0
   agent: {fileID: 0}
-  currentTarget: {fileID: 0}
+  currentTarget: {fileID: 1010263472}
   isAttacking: 0
 --- !u!195 &1382528180
 NavMeshAgent:
