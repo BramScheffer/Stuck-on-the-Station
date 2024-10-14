@@ -4677,6 +4677,7 @@ GameObject:
   - component: {fileID: 2128812661}
   - component: {fileID: 2128812660}
   - component: {fileID: 2128812665}
+  - component: {fileID: 2128812666}
   m_Layer: 0
   m_Name: Menu Master
   m_TagString: Untagged
@@ -4697,7 +4698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1158739434}
-  fadeDuration: 9
+  fadeDuration: 5
 --- !u!114 &2128812661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4711,7 +4712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1833865149}
-  fadeDuration: 6
+  fadeDuration: 4
 --- !u!114 &2128812662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4769,16 +4770,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   main: {fileID: 1291691501}
   settings: {fileID: 0}
+--- !u!114 &2128812666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128812659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895fcbe27965a0f4f8fe85abad0d2358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullScreenToggle: {fileID: 2047079775}
+  toggleLabel: {fileID: 412027323}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2103870352}
+  - {fileID: 2128812664}
   - {fileID: 1340453225}
   - {fileID: 1291691498}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 2128812664}
   - {fileID: 682828582}
   - {fileID: 205842929}
   - {fileID: 30975854}
