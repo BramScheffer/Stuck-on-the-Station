@@ -44,12 +44,20 @@ public class Turret : MonoBehaviour
     void Update()
     {
         ammoCount.text = string.Format("{0}/50", currentAmmo);
+
         // Check if currently reloading
         if (isReloading)
             return;
 
         // Reload when out of ammo and fire button is pressed
         if (currentAmmo <= 0 && Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
+        // Reload when "R" key is pressed and not already reloading
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
             StartCoroutine(Reload());
             return;
@@ -74,11 +82,6 @@ public class Turret : MonoBehaviour
         {
             empty = false;
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
-
     }
 
     void Shoot()
@@ -128,17 +131,12 @@ public class Turret : MonoBehaviour
                         Destroy(impactGO, 2f); // Destroy the impact effect after 2 seconds
                     }
                 }
-
             }
             else
             {
                 Debug.Log("Raycast did not hit anything.");
             }
         }
-
-
-        // Check ammo count
-
     }
 
     IEnumerator Reload()
@@ -151,8 +149,7 @@ public class Turret : MonoBehaviour
 
         // Reset ammo and state
         currentAmmo = maxAmmo;
-        ammo = Mathf.Max(ammo, 0); // Ensure ammo is not negative
-        empty = false;
         isReloading = false;
+        Debug.Log("Reload complete!");
     }
 }
