@@ -396,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 279683812}
   serializedVersion: 2
   m_LocalRotation: {x: 0.029919209, y: 0, z: 0, w: 0.99955237}
-  m_LocalPosition: {x: 14.74, y: 2.61, z: -29.64}
+  m_LocalPosition: {x: 14.74, y: 2.61, z: -30.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1804,28 +1804,39 @@ MonoBehaviour:
   - {fileID: 4785523917919551454, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
   - {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   - {fileID: 3995371017219645277, guid: ac37e134a8caead4e901b7c4d01425d3, type: 3}
+  - {fileID: 4066015363361776779, guid: e07083bc406957d48a1e87e3b80eb378, type: 3}
   - {fileID: 4196181359565913775, guid: 2f6c712f8aafbc14793865888fc47251, type: 3}
   - {fileID: 4033219242461154498, guid: d7afca9da5704c5458ac11f030402f14, type: 3}
   - {fileID: 7629830409493578273, guid: 5398e7aa0f464ee48b17891cb00c89a6, type: 3}
   - {fileID: 4969170076976188381, guid: e133a2ef8d0374a4fb35fda2b816c3fa, type: 3}
   - {fileID: 3134462927463743330, guid: 4a68ef7adb21c424cb165209deee93d1, type: 3}
   - {fileID: 8806529945612992437, guid: 0b5dafd913eb1144a9492d9dbf5915a6, type: 3}
+  - {fileID: 6531071840858526191, guid: 8e6300b7a7347494ca9cf184577efbc6, type: 3}
+  - {fileID: 1339537093844579079, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+  - {fileID: 8741017976555781733, guid: 4346f871ea9a6e14ba29c75db1c8878e, type: 3}
+  - {fileID: 4036193792177413385, guid: 2c22daca12862024b99f0701011bb255, type: 3}
+  - {fileID: 1656112654584946411, guid: e7222c510fce4d4439700bc0dde9df82, type: 3}
   nextButton: {fileID: 1987625571}
   prevButton: {fileID: 912723995}
   spawnPoint: {fileID: 1656504759}
   descriptionText: {fileID: 1901275337}
   modelDescriptions:
-  - ' Press The ">" button'
+  - Not all models included. Press ">"
   - 'Model Made By: Finn          This is the turret the player uses to shoot the
     zombies'
   - 'Model Made By: Finn          This is the turret the player can place down'
   - 'Model Made By: Finn           This is the energy pole use it to charge the train'
+  - 'Model Made By: FInn'
   - 'Model Made By: Joey'
   - 'Model Made By: Joey'
   - 'Model Made By: Bram'
   - 'Model Made By: Bram'
   - 'Model Made By: Bram'
   - 'Model Made By: Finn'
+  - 'Model Made By: Bram'
+  - 'Model Made By: Bram'
+  - 'Model Made By: Bram'
+  - 'Effect Made By: Finn'
   rotationSpeed: 50
 --- !u!4 &1656504759
 Transform:

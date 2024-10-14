@@ -36,6 +36,9 @@ public class SpawnerScript : MonoBehaviour
     // Delay time after each round before starting the next
     public float roundDelay = 10f;
 
+    // Random range for spawning around each spawn point
+    public float spawnRange = 1.5f;
+
     void Start()
     {
         // Start the spawning coroutine
@@ -88,17 +91,21 @@ public class SpawnerScript : MonoBehaviour
         }
     }
 
-    // Function to spawn objects at specific spawn points
+    // Function to spawn objects at specific spawn points with random range
     void SpawnObject(SpawnObjectType objectToSpawnType, Transform spawnPoint)
     {
         // Ensure that the spawn point is valid
         if (spawnPoint != null)
         {
-            Vector3 spawnPosition = new Vector3(
-                spawnPoint.position.x,
-                spawnPoint.position.y, // Use the Y from the spawn point
-                spawnPoint.position.z
+            // Randomize the spawn position within a specified range around the spawn point
+            Vector3 randomOffset = new Vector3(
+                Random.Range(-spawnRange, spawnRange), // X-axis random range
+                0, // Keep the Y-axis as is (assuming 2D spawning on the ground or flat surface)
+                Random.Range(-spawnRange, spawnRange)  // Z-axis random range
             );
+
+            // Final spawn position with offset
+            Vector3 spawnPosition = spawnPoint.position + randomOffset;
 
             // Spawn the object based on the specified type
             switch (objectToSpawnType)
@@ -140,3 +147,4 @@ public class SpawnerScript : MonoBehaviour
         return spawnSequence[currentRoundIndex].countdown;
     }
 }
+    
