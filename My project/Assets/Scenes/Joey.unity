@@ -598,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 878543477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.56, y: 0.5, z: -4.43}
+  m_LocalPosition: {x: 3.56, y: 0.28, z: -4.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -791,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 1010263468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 1.5, z: 9.75}
+  m_LocalPosition: {x: -0.56, y: 1.44, z: 9.75}
   m_LocalScale: {x: 12, y: 3, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -967,14 +967,12 @@ MonoBehaviour:
   trein: {fileID: 1010263472}
   turrets:
   - {fileID: 878543478}
-  attackRange: 1
+  attackRange: 1.5
   attackDamage: 100
-  speed: 1.5
   slowedSpeed2: 0
   slowDuration2: 0
   agent: {fileID: 0}
-  currentTarget: {fileID: 1010263472}
-  isAttacking: 0
+  currentTarget: {fileID: 0}
 --- !u!195 &1382528180
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1065,6 +1063,28 @@ MonoBehaviour:
   killsund: {fileID: 0}
   mn: {fileID: 0}
   sSC: {fileID: 0}
+--- !u!64 &1382528187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382528176}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1517163387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,6 +2512,18 @@ PrefabInstance:
       value: -0.000106369
       objectReference: {fileID: 0}
     - target: {fileID: 7825692270442077126, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.020593256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825692270442077126, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.06586647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825692270442077126, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.19124949
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825692270442077126, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3e38e0b2d654ef24bbe207923930c121, type: 2}
@@ -2661,6 +2693,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1382528185}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1382528187}
   m_SourcePrefab: {fileID: 100100000, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
