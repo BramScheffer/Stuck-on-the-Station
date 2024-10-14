@@ -29,5 +29,9 @@ public class BuyMenu : MonoBehaviour
     {
         blman.BarbedWire();
     }
+    public void Gastank()
+    {
+        blman.GasTank();
+    }
 
 }

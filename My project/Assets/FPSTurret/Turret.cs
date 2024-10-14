@@ -98,37 +98,36 @@ public class Turret : MonoBehaviour
             // Play muzzle flash effect
             if (muzzleFlash != null)
             {
-                Debug.Log("Playing Muzzle Flash"); // Debugging log
-                muzzleFlash.Stop();    // Ensure the particle system is stopped
-                muzzleFlash.Clear();   // Clear any remaining particles
-                muzzleFlash.Play();    // Now play the particle system again
-            }
-            else
-            {
-                Debug.LogWarning("Muzzle Flash is not assigned!");
+                muzzleFlash.Stop();
+                muzzleFlash.Clear();
+                muzzleFlash.Play();
             }
 
             // Perform the raycast
             RaycastHit hit;
             if (Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out hit, range))
             {
-                // Debugging information
                 Debug.Log($"Hit: {hit.collider.name} at {hit.point}");
 
-                // Apply damage to the target if it has a health component
+                // Check if the hit object is a gas tank
+                GasTank gasTank = hit.collider.GetComponent<GasTank>();
+                if (gasTank != null)
+                {
+                    gasTank.Explode();  // Trigger explosion on gas tank
+                }
+
+                // Apply damage to enemies
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    // Get the Enemy script from the hit object
                     Enemy enemy = hit.collider.GetComponent<Enemy>();
                     if (enemy != null)
                     {
-                        // Call the hit method on the enemy script
-                        enemy.hit(); // Pass the damage amount as needed
+                        enemy.hit();  // Call hit method on the enemy script
                     }
                     if (impactEffect != null)
                     {
                         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                        Destroy(impactGO, 2f); // Destroy the impact effect after 2 seconds
+                        Destroy(impactGO, 2f);
                     }
                 }
             }
@@ -138,6 +137,7 @@ public class Turret : MonoBehaviour
             }
         }
     }
+
 
     IEnumerator Reload()
     {

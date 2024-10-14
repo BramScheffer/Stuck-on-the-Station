@@ -1,116 +1,105 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     public int hits;
-    public float health;
+    public int health;
     public bool giant;
     public ParticleSystem killed; // ParticleSystem to play on death
     public GameObject particleEffectPrefab;
     public AudioClip killsund;
     public Money mn;
     public SpawnerScript sSC;
+
     // Start is called before the first frame update
     void Start()
     {
-        // Corrected the condition to check if the giant is true or false
         if (giant)
         {
             health = 50; // If giant, health is 50
         }
         else
         {
-            health = 15; // If not giant, health is 10
+            health = 15; // If not giant, health is 15
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-     
     }
 
     public void hit()
     {
         hits += 1;
-        health -= 2f;
+        health -= 2;
 
+        if (health <= 0)
         {
-            if (health <= 0)
+            Destroy(gameObject);
+            SpawnEffect(); // Now the method is accessible
+            AudioSource.PlayClipAtPoint(killsund, transform.position);
+            if (giant)
             {
-                Destroy(gameObject);
-                // Instantiate the ParticleSystem at the enemy's position and rotation
-                SpawnEffect();
+                mn.BigZombie();
+            }
+            else
+            {
+                mn.SmallZombie();
                 sSC.DecrementCountdown();
-                AudioSource.PlayClipAtPoint(killsund, transform.position);
-                if (giant)
-                {
-                    mn.BigZombie();
-                }
-                else
-                {
-                    mn.SmallZombie();
-                }
-
-                // Instantiate and play the particle system
-
             }
-        }
-        void SpawnEffect()
-        {
-            // Instantiate the particle effect at the position and rotation of the GameObject this script is attached to
-            GameObject impactGO = Instantiate(particleEffectPrefab, transform.position, transform.rotation);
-
-            // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
-            Destroy(impactGO, 2f);
         }
     }
-    public void turretHit()
-    {
-        {
-            hits += 1;
-            health -= 1f;
 
-            {
-                if (health <= 0)
-                {
-                    Destroy(gameObject);
-                    // Instantiate the ParticleSystem at the enemy's position and rotation
-                    SpawnEffect();
-                    AudioSource.PlayClipAtPoint(killsund, transform.position);
-                    if (giant)
-                    {
-                        mn.BigZombie();
-                      
-
-                    }
-                    else
-                    {
-                        mn.SmallZombie();
-                        sSC.DecrementCountdown();
-                    }
-
-                    // Instantiate and play the particle system
-
-                }
-            }
-            void SpawnEffect()
-            {
-                // Instantiate the particle effect at the position and rotation of the GameObject this script is attached to
-                GameObject impactGO = Instantiate(particleEffectPrefab, transform.position, transform.rotation);
-
-                // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
-                Destroy(impactGO, 2f);
-            }
-            
-        }
-    }
     public void Explosion()
     {
         health -= 100;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            SpawnEffect(); // You can now call it from here as well
+            AudioSource.PlayClipAtPoint(killsund, transform.position);
+            if (giant)
+            {
+                mn.BigZombie();
+            }
+            else
+            {
+                mn.SmallZombie();
+                sSC.DecrementCountdown();
+            }
+        }
     }
+
+    // Method to spawn particle effect
+    private void SpawnEffect()
+    {
+        // Instantiate the particle effect at the position and rotation of the GameObject
+        GameObject impactGO = Instantiate(particleEffectPrefab, transform.position, transform.rotation);
+
+        // Optionally destroy the instantiated effect after some time (e.g., 2 seconds)
+        Destroy(impactGO, 2f);
+    }
+
+    public void turretHit()
+    {
+        hits += 1;
+        health -= 2;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            SpawnEffect();  // Zorg dat SpawnEffect correct is
+            AudioSource.PlayClipAtPoint(killsund, transform.position);
+
+            if (giant)
+            {
+                mn.BigZombie();
+            }
+            else
+            {
+                mn.SmallZombie();
+                sSC.DecrementCountdown();
+            }
+        }
+    }
+
 }
