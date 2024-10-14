@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     public int hits;
-    public int health;
+    public float health;
     public bool giant;
     public ParticleSystem killed; // ParticleSystem to play on death
     public GameObject particleEffectPrefab;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     public void hit()
     {
         hits += 1;
-        health -= 2;
+        health -= 2f;
 
         {
             if (health <= 0)
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
     {
         {
             hits += 1;
-            health -= 2;
+            health -= 1f;
 
             {
                 if (health <= 0)
