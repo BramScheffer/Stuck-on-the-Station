@@ -1,22 +1,20 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class ZombieAnimator : MonoBehaviour
 {
-    private Animator animator;
-    private NavMeshAgent agent;
-    private ZombieAI zombieAI;
+    private Animator animator; // Referentie naar de Animator
+    private ZombieAI zombieAI; // Referentie naar de ZombieAI
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
         zombieAI = GetComponent<ZombieAI>();
     }
 
     private void Update()
     {
-        if (agent.velocity.magnitude > 0.1f)
+        // Als de zombie loopt, speel de loopanimatie
+        if (zombieAI.agent.velocity.magnitude > 0.1f)
         {
             SetWalking(true);
         }
@@ -24,30 +22,29 @@ public class ZombieAnimator : MonoBehaviour
         {
             SetWalking(false);
         }
-
-        // Only trigger attack if zombie is close enough and not already attacking
-        if (zombieAI.currentTarget != null && zombieAI.IsWithinAttackRange() && !zombieAI.isAttacking)
-        {
-            SetAttack();
-        }
     }
 
-    // Trigger walking animation
+    // Start de aanvalsanimering
+    public void TriggerAttackAnimation()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+    // Zet de loopanimatie aan of uit
     public void SetWalking(bool isWalking)
     {
         animator.SetBool("isWalking", isWalking);
     }
 
-    // Trigger attack animation
-    public void SetAttack()
-    {
-        animator.SetTrigger("isAttacking");
-        zombieAI.StartAttack(); // Tell ZombieAI to start attack logic
-    }
-
-    // Called from animation event
+    // Deze functie wordt aangeroepen door een Animation Event op het moment dat de aanval schade moet doen
     public void OnAttackHit()
     {
-        zombieAI.ApplyDamage(); // Apply the damage during the impact frame of the animation
+        zombieAI.ApplyDamage(); // Roep de ApplyDamage functie aan in ZombieAI
+    }
+
+    // Deze functie wordt aangeroepen aan het einde van de aanvalanimatie
+    public void OnAttackEnd()
+    {
+        zombieAI.EndAttack(); // Eindig de aanval
     }
 }

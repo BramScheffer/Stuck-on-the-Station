@@ -5,134 +5,133 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    public Transform trein; // The train target
-    public List<Transform> turrets; // List of turrets to attack
-    public float attackRange = 2.0f; // Range within which to attack
-    public float attackDamage; // Amount of damage dealt per attack
-    public float speed = 3.5f; // Normal movement speed
-    public float slowedSpeed2 = 2f; // Speed when slowed
-    public float slowDuration2 = 3f; // Duration of slow effect
+    public Transform trein; // Het treindoel
+    public List<Transform> turrets; // Lijst met turrets om aan te vallen
+    public float attackRange = 2.0f; // Bereik waarin de zombie kan aanvallen
+    public float attackDamage = 10f; // Hoeveel schade de zombie aanricht per aanval
+    public float slowedSpeed2 = 1.5f;
+    public float slowDuration2 = 2f;
 
-    public NavMeshAgent agent; // Reference to the NavMeshAgent
-    public Transform currentTarget; // The current target the zombie is attacking
+    public NavMeshAgent agent; // NavMeshAgent voor beweging
+    public Transform currentTarget; // Huidig doelwit (turret of trein)
 
-    public bool isAttacking = false; // To check if the zombie is currently attacking
+    private bool isAttacking = false; // Houdt bij of de zombie aanvalt
+    private ZombieAnimator zombieAnimator; // Referentie naar het ZombieAnimator-script
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
-        UpdateTarget(); // Set the initial target
+        zombieAnimator = GetComponent<ZombieAnimator>(); // Haal het ZombieAnimator-script op
+        UpdateTarget(); // Vind het eerste doelwit
     }
 
     private void Update()
     {
-        if (currentTarget != null)
+        // Als er een huidig doel is en de zombie is niet aan het aanvallen
+        if (currentTarget != null && !isAttacking)
         {
-            agent.destination = currentTarget.position;
+            agent.SetDestination(currentTarget.position);
 
-            // If not attacking and within range, start attack
-            if (!isAttacking && IsWithinAttackRange())
+            // Als de zombie binnen het aanvalbereik is, start de aanval
+            if (IsWithinAttackRange())
             {
-                StartAttack(); // Start the attack
+                StartAttack();
             }
         }
-        else
+
+        // Als er geen huidig doel is, update het doel
+        if (currentTarget == null)
         {
-            UpdateTarget(); // Update target if none is set
+            UpdateTarget();
         }
     }
 
-    // Check if the zombie is within attack range
-    public bool IsWithinAttackRange()
+    // Controleer of de zombie binnen het aanvalbereik is
+    private bool IsWithinAttackRange()
     {
-        return currentTarget != null && Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
+        return Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
     }
 
-    // Start the attack
-    public void StartAttack()
+    // Start de aanval
+    private void StartAttack()
     {
-        isAttacking = true; // Mark as attacking
-        // Trigger the attack animation here, if necessary
+        isAttacking = true;
+        agent.isStopped = true; // Stop de zombie tijdens de aanval
+        zombieAnimator.TriggerAttackAnimation(); // Start de aanvalsanimering
     }
 
-    // Called by animation event to apply damage
+    // Wordt door de animatie aangeroepen (Animation Event) om schade toe te brengen
     public void ApplyDamage()
     {
         if (currentTarget != null)
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
+
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(attackDamage); // Deal damage
+                targetHealth.TakeDamage(attackDamage);
+
                 if (targetHealth.IsDead())
                 {
-                    // If the target is dead, destroy it and switch targets
-                    Destroy(currentTarget.gameObject); // Destroy the current turret
-                    turrets.Remove(currentTarget); // Remove dead turret
-                    UpdateTarget(); // Update the target to the next one
+                    // Verwijder het doel als het dood is
+                    if (currentTarget != trein)
+                    {
+                        turrets.Remove(currentTarget);
+                    }
+                    UpdateTarget(); // Zoek een nieuw doelwit
                 }
             }
         }
-
-        EndAttack(); // End the attack after applying damage
     }
 
-    // End the attack
-    private void EndAttack()
+    // Eindig de aanval en laat de zombie weer bewegen
+    public void EndAttack()
     {
-        isAttacking = false; // Reset attacking status
+        isAttacking = false;
+        agent.isStopped = false; // Laat de zombie weer bewegen
     }
 
-    // Update the target to the closest turret or train
-    void UpdateTarget()
+    // Update het doel naar de dichtstbijzijnde turret of de trein
+    private void UpdateTarget()
     {
-        currentTarget = GetClosestTurret();
-
-        // If no turrets are available, switch to the train
-        if (currentTarget == null)
-        {
-            currentTarget = trein;
-        }
+        currentTarget = GetClosestTurret() ?? trein; // Vind de dichtstbijzijnde turret, of ga naar de trein als er geen turrets zijn
     }
 
-    // Find the closest turret
-    Transform GetClosestTurret()
+    // Vind de dichtstbijzijnde turret
+    private Transform GetClosestTurret()
     {
         Transform closestTurret = null;
         float closestDistance = Mathf.Infinity;
 
-        for (int i = turrets.Count - 1; i >= 0; i--)
+        foreach (Transform turret in turrets)
         {
-            if (turrets[i] == null) // Handle any destroyed turrets
-            {
-                turrets.RemoveAt(i);
-                continue;
-            }
-
-            float distanceToTurret = Vector3.Distance(transform.position, turrets[i].position);
+            float distanceToTurret = Vector3.Distance(transform.position, turret.position);
             if (distanceToTurret < closestDistance)
             {
                 closestDistance = distanceToTurret;
-                closestTurret = turrets[i];
+                closestTurret = turret;
             }
         }
 
-        return closestTurret; // Return the closest turret
+        return closestTurret;
     }
-
-    // Called when the zombie is hit by a barbed trap
     public void BarbedHit()
     {
-        StartCoroutine(ApplySlowEffect()); // Start slow effect coroutine
+        StartCoroutine(ApplySlowEffect());
     }
 
-    // Coroutine to apply slow effect
     IEnumerator ApplySlowEffect()
     {
-        float originalSpeed = agent.speed; // Store original speed
-        agent.speed = slowedSpeed2; // Apply slowed speed
-        yield return new WaitForSeconds(slowDuration2); // Wait for slow duration
-        agent.speed = originalSpeed; // Reset speed to original
+        // Store the original speed
+        float originalSpeed = agent.speed;
+
+        // Apply the slowed speed
+        agent.speed = slowedSpeed2;
+
+        // Wait for the duration of the slow effect
+        yield return new WaitForSeconds(slowDuration2);
+
+        // Reset the speed back to the original speed
+        agent.speed = originalSpeed;
     }
 }
