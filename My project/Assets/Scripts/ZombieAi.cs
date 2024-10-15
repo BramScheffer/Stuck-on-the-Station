@@ -75,7 +75,6 @@ public class ZombieAI : MonoBehaviour
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
 
-            // Controleer of targetHealth niet null is
             if (targetHealth != null)
             {
                 targetHealth.BrengSchadeToe(attackDamage); // Breng de juiste schade toe
@@ -89,13 +88,8 @@ public class ZombieAI : MonoBehaviour
                     UpdateTarget(); // Zoek een nieuw doelwit
                 }
             }
-            else
-            {
-                Debug.LogWarning($"Target {currentTarget.name} has no Health component.");
-            }
         }
     }
-
 
     // Update het doel naar de dichtstbijzijnde turret of de trein
     private void UpdateTarget()
