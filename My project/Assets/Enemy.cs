@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             SpawnEffect(); // Now the method is accessible
             AudioSource.PlayClipAtPoint(killsund, transform.position);
+
             if (giant)
             {
                 mn.BigZombie();
@@ -43,10 +44,12 @@ public class Enemy : MonoBehaviour
             else
             {
                 mn.SmallZombie();
-                sSC.DecrementCountdown();
             }
+
+            sSC.DecrementCountdown();  // Moved outside the if block
         }
     }
+
 
     public void Explosion()
     {
@@ -55,18 +58,19 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            SpawnEffect(); // You can now call it from here as well
+            SpawnEffect();
             AudioSource.PlayClipAtPoint(killsund, transform.position);
+
             if (giant)
             {
                 mn.BigZombie();
-                sSC.DecrementCountdown();
             }
             else
             {
                 mn.SmallZombie();
-                sSC.DecrementCountdown();
             }
+
+            sSC.DecrementCountdown();  // Moved outside the if block
         }
     }
 
@@ -80,6 +84,7 @@ public class Enemy : MonoBehaviour
         Destroy(impactGO, 2f);
     }
 
+
     public void turretHit()
     {
         hits += 1;
@@ -88,7 +93,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            SpawnEffect();  // Zorg dat SpawnEffect correct is
+            SpawnEffect();
             AudioSource.PlayClipAtPoint(killsund, transform.position);
 
             if (giant)
@@ -98,8 +103,9 @@ public class Enemy : MonoBehaviour
             else
             {
                 mn.SmallZombie();
-                sSC.DecrementCountdown();
             }
+
+            sSC.DecrementCountdown();  // Moved outside the if block
         }
     }
     public void FireDamage()
