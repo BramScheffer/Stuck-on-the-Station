@@ -36,15 +36,29 @@ public class ZombieAnimator : MonoBehaviour
         animator.SetBool("isWalking", isWalking);
     }
 
+    // Deze functie retourneert de lengte van de aanvalsanimering
+    public float GetAttackAnimationLength()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (var clip in clips)
+        {
+            if (clip.name == "Attack") // Zorg ervoor dat de naam overeenkomt met je animatie
+            {
+                return clip.length;
+            }
+        }
+        return 0f; // Standaard waarde als de animatie niet gevonden is
+    }
+
     // Deze functie wordt aangeroepen door een Animation Event op het moment dat de aanval schade moet doen
     public void OnAttackHit()
     {
-        zombieAI.ApplyDamage(); // Roep de ApplyDamage functie aan in ZombieAI
+        zombieAI.BrengSchadeToe(); // Correcte aanroep van de schade methode
     }
 
-    // Deze functie wordt aangeroepen aan het einde van de aanvalanimatie
+    // Deze functie wordt aangeroepen aan het einde van de aanvalsanimering
     public void OnAttackEnd()
     {
-        zombieAI.EndAttack(); // Eindig de aanval
+        // Hier is geen logica meer nodig omdat we nu alles in de coroutine beheren
     }
 }

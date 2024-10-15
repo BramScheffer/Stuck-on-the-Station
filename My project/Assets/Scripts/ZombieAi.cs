@@ -35,7 +35,7 @@ public class ZombieAI : MonoBehaviour
             // Als de zombie binnen het aanvalbereik is, start de aanval
             if (IsWithinAttackRange())
             {
-                StartAttack();
+                StartCoroutine(Attack());
             }
         }
 
@@ -52,25 +52,33 @@ public class ZombieAI : MonoBehaviour
         return Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
     }
 
-    // Start de aanval
-    private void StartAttack()
+    // Coroutine om de aanval te beheren
+    private IEnumerator Attack()
     {
         isAttacking = true;
         agent.isStopped = true; // Stop de zombie tijdens de aanval
         zombieAnimator.TriggerAttackAnimation(); // Start de aanvalsanimering
+
+        // Wacht totdat de animatie een bepaalde tijd duurt (de duur van de aanvalsanimeer)
+        yield return new WaitForSeconds(zombieAnimator.GetAttackAnimationLength());
+
+        BrengSchadeToe(); // Breng schade toe na de animatie
+
+        agent.isStopped = false; // Laat de zombie weer bewegen
+        isAttacking = false; // Reset de aanvalseis
     }
 
-    // Wordt door de animatie aangeroepen (Animation Event) om schade toe te brengen
-    public void ApplyDamage()
+    // Deze functie wordt aangeroepen om schade toe te brengen
+    public void BrengSchadeToe()
     {
         if (currentTarget != null)
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
 
+            // Controleer of targetHealth niet null is
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(attackDamage);
-
+                targetHealth.BrengSchadeToe(attackDamage); // Breng de juiste schade toe
                 if (targetHealth.IsDead())
                 {
                     // Verwijder het doel als het dood is
@@ -81,15 +89,13 @@ public class ZombieAI : MonoBehaviour
                     UpdateTarget(); // Zoek een nieuw doelwit
                 }
             }
+            else
+            {
+                Debug.LogWarning($"Target {currentTarget.name} has no Health component.");
+            }
         }
     }
 
-    // Eindig de aanval en laat de zombie weer bewegen
-    public void EndAttack()
-    {
-        isAttacking = false;
-        agent.isStopped = false; // Laat de zombie weer bewegen
-    }
 
     // Update het doel naar de dichtstbijzijnde turret of de trein
     private void UpdateTarget()
@@ -115,6 +121,7 @@ public class ZombieAI : MonoBehaviour
 
         return closestTurret;
     }
+
     public void BarbedHit()
     {
         StartCoroutine(ApplySlowEffect());
@@ -122,16 +129,16 @@ public class ZombieAI : MonoBehaviour
 
     IEnumerator ApplySlowEffect()
     {
-        // Store the original speed
+        // Bewaar de oorspronkelijke snelheid
         float originalSpeed = agent.speed;
 
-        // Apply the slowed speed
+        // Pas de vertraagde snelheid toe
         agent.speed = slowedSpeed2;
 
-        // Wait for the duration of the slow effect
+        // Wacht de duur van het vertraagde effect
         yield return new WaitForSeconds(slowDuration2);
 
-        // Reset the speed back to the original speed
+        // Reset de snelheid terug naar de oorspronkelijke snelheid
         agent.speed = originalSpeed;
     }
 }
