@@ -21,7 +21,8 @@ public class GasTank : MonoBehaviour
             // Play explosion effect and sound
             if (explosionEffect != null)
             {
-                Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                ParticleSystem effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                effect.Play();  // Ensure the particle system starts playing if not set to "Play on Awake"
             }
             if (explosionSound != null)
             {
@@ -42,7 +43,7 @@ public class GasTank : MonoBehaviour
             }
 
             // Destroy the gas tank object after the explosion
-            Destroy(gameObject, 1f);  // Optionally delay destruction by 1 second for effect
+            Destroy(gameObject, 0.1f);  // Optionally delay destruction by 1 second for effect
         }
     }
 

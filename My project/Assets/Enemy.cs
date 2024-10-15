@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int hits;
-    public int health;
+    public float health;
     public bool giant;
     public ParticleSystem killed; // ParticleSystem to play on death
     public GameObject particleEffectPrefab;
@@ -100,6 +100,10 @@ public class Enemy : MonoBehaviour
                 sSC.DecrementCountdown();
             }
         }
+    }
+    public void FireDamage()
+    {
+        health -= 100;
     }
 
 }

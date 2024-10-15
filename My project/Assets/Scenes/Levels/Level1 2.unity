@@ -641,6 +641,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &61294599 stripped
@@ -675,15 +676,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205228329b949ca46af8e269ef172d66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.529999
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205228329b949ca46af8e269ef172d66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.75
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205228329b949ca46af8e269ef172d66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.5
+      value: -22.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 205228329b949ca46af8e269ef172d66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2152,6 +2153,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!1001 &247612809
@@ -2630,7 +2632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.7
+      value: 31.140001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3194,6 +3196,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &327723085 stripped
@@ -3684,6 +3687,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &386316298 stripped
@@ -4035,6 +4039,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &421818964 stripped
@@ -4280,6 +4285,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &431454345 stripped
@@ -5453,6 +5459,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &552197370 stripped
@@ -5491,12 +5498,18 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &566429423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7138705905380037449, guid: 658f86b40f6657c41b2c170fe3ed1da5, type: 3}
   m_PrefabInstance: {fileID: 2087153544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &566577751 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+  m_PrefabInstance: {fileID: 2622741026836106662}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &575359158
 GameObject:
@@ -5603,6 +5616,7 @@ Transform:
   - {fileID: 1605462312}
   - {fileID: 966386835}
   - {fileID: 311729615}
+  - {fileID: 566577751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &589022375 stripped
@@ -6832,6 +6846,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &687930886 stripped
@@ -6860,6 +6875,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &696518977 stripped
@@ -9600,6 +9616,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &929656982 stripped
@@ -9719,7 +9736,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -9753,6 +9770,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &956935548 stripped
@@ -11859,7 +11877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8177627622938404111, guid: 0b5dafd913eb1144a9492d9dbf5915a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.3
+      value: 29.38
       objectReference: {fileID: 0}
     - target: {fileID: 8177627622938404111, guid: 0b5dafd913eb1144a9492d9dbf5915a6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12000,6 +12018,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &1197765477 stripped
@@ -13100,6 +13119,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1878815104}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1001 &1291144544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1339537093844579079, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_Name
+      value: Gastank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863695639613860285, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aebe6f8ea2c20de4087b94531dbcfe5f, type: 3}
 --- !u!4 &1296376703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5589388270168924392, guid: 0a07403a1de17744eb4c19fadf6a6219, type: 3}
@@ -13275,7 +13351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13283,7 +13359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.36
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93da62a7d85ca9f43a6d1bc6b9e63ccd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14057,6 +14133,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &1393079957 stripped
@@ -14514,15 +14591,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5770506
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.8167084
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -14534,7 +14611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 109.513
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 310ee76b63ef6714cba6779617ffff6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -15685,6 +15762,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!4 &1569968918 stripped
@@ -16173,6 +16251,7 @@ MonoBehaviour:
   spawnInterval: 0.25
   spawnEnabled: 1
   roundDelay: 5
+  spawnRange: 1.5
 --- !u!4 &1603914791
 Transform:
   m_ObjectHideFlags: 0
@@ -17993,6 +18072,7 @@ MonoBehaviour:
   standardTurretPrefab: {fileID: 5574932430669023541, guid: abc07205cf494b047ba842d906efb479, type: 3}
   enrgieTowerPrefab: {fileID: 5201688072093899518, guid: eaead1accdf40654e86ef676c077ef80, type: 3}
   barbedWirePrefab: {fileID: 1044642185318999888, guid: 9d06702fb91dbb84583754dd714df7e1, type: 3}
+  gastTankPrefab: {fileID: 0}
   traps: 0
   energy: 0
 --- !u!1 &1849289750
@@ -20483,6 +20563,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb179c1c5a73e043bf24a8747c74fcc, type: 3}
   m_PrefabInstance: {fileID: 2119714414}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2622741026836106662
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 575359160}
+    m_Modifications:
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17460735015120942, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182824463128720737, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
+      propertyPath: m_Name
+      value: eXPLOSION
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
 --- !u!1001 &4552662641040632312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22395,3 +22532,4 @@ SceneRoots:
   - {fileID: 1409439239}
   - {fileID: 1865245105}
   - {fileID: 1400425419}
+  - {fileID: 1291144544}
