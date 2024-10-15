@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ModelViewer : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ModelViewer : MonoBehaviour
     public Button nextButton;
     public Button prevButton;
     public Transform spawnPoint;
+    public Button Back;
 
     public TMP_Text descriptionText; // For UI Text (if using UnityEngine.UI)
                                  // public TMP_Text descriptionText; // Uncomment this line if using TextMeshPro (TMP_Text)
@@ -27,6 +29,7 @@ public class ModelViewer : MonoBehaviour
     {
         nextButton.onClick.AddListener(NextModel);
         prevButton.onClick.AddListener(PreviousModel);
+        Back.onClick.AddListener(BackTomenu);
         SpawnModel(currentIndex);
         UpdateButtonStates();
     }
@@ -102,4 +105,9 @@ public class ModelViewer : MonoBehaviour
         prevButton.interactable = currentIndex > 0;
         nextButton.interactable = currentIndex < prefabModels.Length - 1;
     }
+    private void BackTomenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
