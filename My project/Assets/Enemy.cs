@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
             if (giant)
             {
                 mn.BigZombie();
+                sSC.DecrementCountdown();
             }
             else
             {
