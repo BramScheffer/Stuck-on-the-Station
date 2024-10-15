@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231583, b: 0.009772198, a: 1}
+  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231585, b: 0.009772198, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13826,7 +13826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4951016885806603043, guid: 6a8bf39f3762d4b438dcf5b6f14ba0a6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19581,34 +19581,6 @@ PrefabInstance:
     - target: {fileID: 76627697488385023, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       propertyPath: m_Name
       value: Hud
-      objectReference: {fileID: 0}
-    - target: {fileID: 646555809202939071, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 330
-      objectReference: {fileID: 0}
-    - target: {fileID: 646555809202939071, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 180.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290440268384800939, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_text
-      value: 00/50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290440268384800939, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 709f4c47c9e50914b957dfcd6bb312d3, type: 2}
-    - target: {fileID: 3290440268384800939, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5535382248368325261, guid: 709f4c47c9e50914b957dfcd6bb312d3, type: 2}
-    - target: {fileID: 3290440268384800939, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290440268384800939, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7017704187425797140, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
       propertyPath: m_Pivot.x
