@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 133066796}
   - component: {fileID: 133066795}
   - component: {fileID: 133066794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8825,7 +8825,7 @@ GameObject:
   - component: {fileID: 748371513}
   - component: {fileID: 748371512}
   - component: {fileID: 748371511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15192,7 +15192,7 @@ GameObject:
   - component: {fileID: 1312376850}
   - component: {fileID: 1312376849}
   - component: {fileID: 1312376848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15375,7 +15375,7 @@ GameObject:
   - component: {fileID: 1322387319}
   - component: {fileID: 1322387318}
   - component: {fileID: 1322387317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18152,7 +18152,7 @@ MonoBehaviour:
   spawnSequence:
   - object1Count: 5
     object2Count: 2
-    countdown: 5
+    countdown: 7
     object1SpawnPoints:
     - {fileID: 1658870714}
     - {fileID: 1658870714}
