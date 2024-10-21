@@ -30,6 +30,7 @@ public class UIPanelFlyIn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePanel();
+            
         }
     }
 
@@ -66,6 +67,7 @@ public class UIPanelFlyIn : MonoBehaviour
             }
             movePanelCoroutine = StartCoroutine(MovePanel(offScreenPosition));
             isPanelVisible = false;  // Set the panel as hidden after moving out
+                
         }
     }
 
