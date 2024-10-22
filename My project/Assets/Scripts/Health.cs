@@ -2,46 +2,37 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float maxHealth = 100f; // The maximum health
-    private float currentHealth; // The current health
-
-    public GameObject deathEffect; // Optional: Prefab for death effect (e.g., particles)
+    public float maxHealth = 100f; // De maximale gezondheid
+    private float currentHealth; // De huidige gezondheid
 
     private void Start()
     {
-        currentHealth = maxHealth; // Initialize current health
-        Debug.Log($"{gameObject.name} initialized with {currentHealth} health.");
+        currentHealth = maxHealth; // Zet de huidige gezondheid gelijk aan de maximale gezondheid bij het begin
     }
 
-    // Method to apply damage
+    // Methode om schade toe te brengen
     public void BrengSchadeToe(float amount)
     {
-        currentHealth -= amount; // Reduce current health
-        Debug.Log($"{gameObject.name} has taken {amount} damage, remaining health: {currentHealth}");
+        currentHealth -= amount; // Verminder de huidige gezondheid met het schadebedrag
 
-        if (IsDead())
+        if (currentHealth <= 0)
         {
-            Sterf(); // Trigger death process
+            Sterf(); // Roep de sterf-functie aan als de gezondheid op of onder 0 komt
         }
     }
 
-    // Check if the object is dead
+    // Controleer of het object dood is
     public bool IsDead()
     {
-        return currentHealth <= 0; // Check if dead
+        return currentHealth <= 0; // Retourneer true als de gezondheid 0 of lager is
     }
 
-    // Handle the death (e.g., destroying the object)
+    // Verwijder of vernietig het object als het dood is
     void Sterf()
     {
-        Debug.Log($"{gameObject.name} is destroyed!");
+        Debug.Log($"{gameObject.name} is vernietigd!");
 
-        // Instantiate a death effect if desired
-        if (deathEffect != null)
-        {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-        }
-
-        Destroy(gameObject); // Destroy the object
+        // Eventueel kun je hier nog animaties of geluiden toevoegen
+        Destroy(gameObject); // Vernietig het object als het sterft
     }
 }

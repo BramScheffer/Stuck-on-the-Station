@@ -27,28 +27,25 @@ public class ZombieAI : MonoBehaviour
 
     private void Update()
     {
-        // If there is a current target and the zombie is not attacking
-        if (currentTarget != null)
+        // Als er een huidig doel is en de zombie is niet aan het aanvallen
+        if (currentTarget != null && !isAttacking)
         {
-            if (!isAttacking)
-            {
-                agent.SetDestination(currentTarget.position); // Move towards the target
+            agent.SetDestination(currentTarget.position);
 
-                // If the zombie is within attack range, start the attack
-                if (IsWithinAttackRange())
-                {
-                    StartAttack();
-                }
+            // Als de zombie binnen het aanvalbereik is, start de aanval
+            if (IsWithinAttackRange())
+            {
+                StartCoroutine(Attack()); // Start de Attack coroutine
             }
         }
-        else // If there is no current target, update the target
+
+        // Als er geen huidig doel is, update het doel
+        if (currentTarget == null)
         {
             UpdateTarget();
         }
-
-        // Check if the agent is still moving to update animations
-        UpdateAnimation();
     }
+
 
     // Check if the zombie is within attack range
     private bool IsWithinAttackRange()
@@ -65,6 +62,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     // Method to apply damage, called by the animator
+    // Methode om schade toe te brengen aan het huidige doelwit
     public void BrengSchadeToe()
     {
         if (currentTarget != null)
@@ -73,17 +71,27 @@ public class ZombieAI : MonoBehaviour
 
             if (targetHealth != null)
             {
-                targetHealth.BrengSchadeToe(attackDamage); // Apply the correct damage
+                targetHealth.BrengSchadeToe(attackDamage); // Toepassen van schade op het doelwit
+
+                // Check of het doelwit dood is na schade toebrengen
                 if (targetHealth.IsDead())
                 {
-                    // Remove the target if it is dead
-                    turrets.Remove(currentTarget); // Remove it from the list
-                    currentTarget = null; // Set current target to null
-                    UpdateTarget(); // Find a new target
+                    Debug.Log($"{currentTarget.name} is vernietigd door de zombie!");
+
+                    // Verwijder het doelwit uit de lijst van turrets
+                    turrets.Remove(currentTarget);
+
+                    currentTarget = null; // Reset het huidige doelwit
+                    UpdateTarget(); // Update het doelwit naar een ander turret of trein
                 }
+            }
+            else
+            {
+                Debug.LogWarning("Het huidige doelwit heeft geen Health-component.");
             }
         }
     }
+
 
     // End the attack and let the zombie move again
     public void EindigAanval()
@@ -133,6 +141,46 @@ public class ZombieAI : MonoBehaviour
 
         return closestTurret;
     }
+    IEnumerator Attack()
+    {
+        // Zolang het huidige doel niet kapot is en het doel nog bestaat
+        while (currentTarget != null && !currentTarget.GetComponent<Health>().IsDead())
+        {
+            // Stop de zombie om te kunnen aanvallen
+            agent.isStopped = true;
+
+            // Speel de aanvalsanimering af
+            zombieAnimator.TriggerAttackAnimation();
+
+            // Wacht totdat de aanvalsanimering bijna klaar is, bijvoorbeeld op het moment dat de schade plaatsvindt
+            yield return new WaitForSeconds(0.5f); // Halverwege de animatie
+
+            // Breng schade toe aan het doel
+            BrengSchadeToe();
+
+            // Wacht totdat de volledige aanvalsanimering klaar is voordat je opnieuw slaat
+            float attackAnimationLength = zombieAnimator.GetAttackAnimationLength();
+            yield return new WaitForSeconds(attackAnimationLength - 0.5f); // Wacht de rest van de animatie af
+        }
+
+        // Als het doelwit dood is, zoek een nieuw doel
+        if (currentTarget != null && currentTarget.GetComponent<Health>().IsDead())
+        {
+            if (currentTarget != trein)
+            {
+                turrets.Remove(currentTarget); // Verwijder het kapotte doel uit de lijst
+            }
+            UpdateTarget(); // Zoek een nieuw doel
+        }
+
+        // Laat de zombie weer bewegen
+        isAttacking = false;
+        agent.isStopped = false;
+    }
+
+
+
+
 
     // Update animation state based on movement
     private void UpdateAnimation()

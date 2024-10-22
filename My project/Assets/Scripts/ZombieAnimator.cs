@@ -57,8 +57,5 @@ public class ZombieAnimator : MonoBehaviour
     }
 
     // Deze functie wordt aangeroepen aan het einde van de aanvalsanimering
-    public void OnAttackEnd()
-    {
-        // Hier is geen logica meer nodig omdat we nu alles in de coroutine beheren
-    }
+  
 }
