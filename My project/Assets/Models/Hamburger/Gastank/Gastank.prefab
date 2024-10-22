@@ -14801,7 +14801,7 @@ MonoBehaviour:
   explosionRadius: 8
   explosionDamage: 100
   explosionEffect: {fileID: 6296823825822293731}
-  explosionSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 639641e59f9e78d44bb4b6bf03fcf875, type: 3}
 --- !u!65 &9186554925963442961
 BoxCollider:
   m_ObjectHideFlags: 0
