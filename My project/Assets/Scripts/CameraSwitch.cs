@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -12,7 +10,8 @@ public class CameraSwitch : MonoBehaviour
     public bool inBuy;
     public bool dead = false;
     public GameObject buyscreen;
-    // Start is called before the first frame update
+    public InGameSettingsPanel settingsPanel; // Reference to the settings panel script
+
     void Start()
     {
         activeCamera = playCam;
@@ -23,7 +22,6 @@ public class CameraSwitch : MonoBehaviour
         buyscreen.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G)) // Detects a single press of the "G" key
@@ -33,13 +31,12 @@ public class CameraSwitch : MonoBehaviour
                 camswitched = true;
                 SwitchCamera();
             }
-        }       
+        }
     }
-
 
     public void SwitchCamera()
     {
-       if (!dead)
+        if (!dead)
         {
             if (activeCamera == playCam)
             {
@@ -47,11 +44,15 @@ public class CameraSwitch : MonoBehaviour
                 buyCam.enabled = true;
                 activeCamera = buyCam;
                 camswitched = false;
-                Cursor.lockState = CursorLockMode.Confined;
-                inBuy = true;
                 buyscreen.SetActive(true);
+                inBuy = true;
 
-
+                // Only unlock the cursor if the settings panel is not open
+                if (!settingsPanel.IsSettingsPanelVisible())
+                {
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                }
             }
             else
             {
@@ -59,20 +60,32 @@ public class CameraSwitch : MonoBehaviour
                 buyCam.enabled = false;
                 activeCamera = playCam;
                 camswitched = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                inBuy = false;
                 buyscreen.SetActive(false);
+                inBuy = false;
 
+                // Only lock the cursor if the settings panel is not open
+                if (!settingsPanel.IsSettingsPanelVisible())
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
             }
-        }// Switch active camera     
+        }
     }
+
     public void death()
     {
         playCam.enabled = false;
         buyCam.enabled = true;
         activeCamera = buyCam;
         inBuy = false;
-        Cursor.lockState = CursorLockMode.Confined;
         dead = true;
+
+        // Only unlock the cursor if the settings panel is not open
+        if (!settingsPanel.IsSettingsPanelVisible())
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
     }
 }
