@@ -27,13 +27,22 @@ public class ZombieAnimator : MonoBehaviour
     // Start de aanvalsanimering
     public void TriggerAttackAnimation()
     {
-        animator.SetTrigger("Attack");
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack"); // Zorg ervoor dat dit overeenkomt met de naam in de Animator
+        }
+        else
+        {
+            Debug.LogWarning("Animator component is missing!");
+        }
     }
+
+
 
     // Zet de loopanimatie aan of uit
     public void SetWalking(bool isWalking)
     {
-        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isWalking", isWalking); // Zorg ervoor dat de naam hier overeenkomt met die in de Animator
     }
 
     // Deze functie retourneert de lengte van de aanvalsanimering
@@ -51,11 +60,24 @@ public class ZombieAnimator : MonoBehaviour
     }
 
     // Deze functie wordt aangeroepen door een Animation Event op het moment dat de aanval schade moet doen
+    // Wordt aangeroepen door een animation event wanneer de zombie het doel raakt
+    // Deze functie wordt aangeroepen door een Animation Event op het moment dat de aanval schade moet doen
     public void OnAttackHit()
     {
         zombieAI.BrengSchadeToe(); // Correcte aanroep van de schade methode
     }
 
+
+    // Wordt aangeroepen aan het einde van de aanvalsanimering
+    public void OnAttackEnd()
+    {
+        Debug.Log("Aanvalsanimering is voorbij.");
+        // Eventueel hier extra logica om de aanval af te sluiten
+    }
+
+
+
+
     // Deze functie wordt aangeroepen aan het einde van de aanvalsanimering
-  
+
 }

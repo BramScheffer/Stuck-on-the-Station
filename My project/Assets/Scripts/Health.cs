@@ -31,8 +31,6 @@ public class Health : MonoBehaviour
     void Sterf()
     {
         Debug.Log($"{gameObject.name} is vernietigd!");
-
-        // Eventueel kun je hier nog animaties of geluiden toevoegen
         Destroy(gameObject); // Vernietig het object als het sterft
     }
 }

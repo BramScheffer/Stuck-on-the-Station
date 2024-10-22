@@ -4,8 +4,8 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour
 {
     // Prefabs to spawn
-    public GameObject objectToSpawn1;
-    public GameObject objectToSpawn2;
+    public GameObject objectToSpawn1; // Zombie prefab
+    public GameObject objectToSpawn2; // Another object prefab (optioneel)
 
     // Enum to define different object types
     public enum SpawnObjectType { Object1, Object2 };
@@ -38,6 +38,8 @@ public class SpawnerScript : MonoBehaviour
 
     // Random range for spawning around each spawn point
     public float spawnRange = 1.5f;
+
+    public Transform trein; // Add this to reference the train target
 
     void Start()
     {
@@ -107,15 +109,28 @@ public class SpawnerScript : MonoBehaviour
             // Final spawn position with offset
             Vector3 spawnPosition = spawnPoint.position + randomOffset;
 
+            GameObject spawnedObject = null; // Declare a variable to hold the spawned object
+
             // Spawn the object based on the specified type
             switch (objectToSpawnType)
             {
                 case SpawnObjectType.Object1:
-                    Instantiate(objectToSpawn1, spawnPosition, Quaternion.identity);
+                    spawnedObject = Instantiate(objectToSpawn1, spawnPosition, Quaternion.identity);
                     break;
                 case SpawnObjectType.Object2:
-                    Instantiate(objectToSpawn2, spawnPosition, Quaternion.identity);
+                    spawnedObject = Instantiate(objectToSpawn2, spawnPosition, Quaternion.identity);
                     break;
+            }
+
+            // If the spawned object is a zombie, initialize it
+            if (spawnedObject != null)
+            {
+                ZombieAI zombieAI = spawnedObject.GetComponent<ZombieAI>();
+                if (zombieAI != null)
+                {
+                    // Set the target for the zombie
+                    zombieAI.SetTarget(trein); // Zorg ervoor dat je deze methode toevoegt aan ZombieAI
+                }
             }
         }
         else
@@ -147,4 +162,3 @@ public class SpawnerScript : MonoBehaviour
         return spawnSequence[currentRoundIndex].countdown;
     }
 }
-    
