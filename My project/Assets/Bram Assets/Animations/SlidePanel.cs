@@ -22,6 +22,9 @@ public class UIPanelFlyIn : MonoBehaviour
         // Add listeners to the buttons
         triggerButton.onClick.AddListener(TogglePanel);
         backButton.onClick.AddListener(ClosePanel);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
