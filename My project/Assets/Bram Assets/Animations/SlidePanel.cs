@@ -22,9 +22,6 @@ public class UIPanelFlyIn : MonoBehaviour
         // Add listeners to the buttons
         triggerButton.onClick.AddListener(TogglePanel);
         backButton.onClick.AddListener(ClosePanel);
-
-
-        
     }
 
     void Update()
@@ -32,9 +29,7 @@ public class UIPanelFlyIn : MonoBehaviour
         // Listen for the Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
             TogglePanel();
-
             
         }
     }
@@ -58,10 +53,7 @@ public class UIPanelFlyIn : MonoBehaviour
             movePanelCoroutine = StartCoroutine(MovePanel(targetPosition));
         }
 
-
-
         isPanelVisible = !isPanelVisible;  // Toggle the panel's visibility state
-        Time.timeScale = 0f;
     }
 
     // Function to handle back button and reverse animation
@@ -75,8 +67,7 @@ public class UIPanelFlyIn : MonoBehaviour
             }
             movePanelCoroutine = StartCoroutine(MovePanel(offScreenPosition));
             isPanelVisible = false;  // Set the panel as hidden after moving out
-            Time.timeScale = 1f;
-
+                
         }
     }
 
