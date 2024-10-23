@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009826544, g: 0.009382042, b: 0.009381483, a: 1}
+  m_IndirectSpecularColor: {r: 0.009826544, g: 0.009382042, b: 0.009381481, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15314,6 +15314,7 @@ GameObject:
   - component: {fileID: 1304108658}
   - component: {fileID: 1304108659}
   - component: {fileID: 1304108660}
+  - component: {fileID: 1304108661}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -15475,6 +15476,20 @@ MonoBehaviour:
   backButton: {fileID: 1251183073}
   flyInSpeed: 2
   isPanelVisible: 0
+--- !u!114 &1304108661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304108652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895fcbe27965a0f4f8fe85abad0d2358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullScreenToggle: {fileID: 1521598283}
+  toggleLabel: {fileID: 658894126}
 --- !u!1001 &1305176989
 PrefabInstance:
   m_ObjectHideFlags: 0
