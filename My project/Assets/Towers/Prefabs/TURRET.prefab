@@ -127,6 +127,8 @@ MonoBehaviour:
   firePoint: {fileID: 7316567002631859931}
   fireCooldown: 1
   projectileSpeed: 50
+  muzzleFlash: {fileID: 0}
+  fireSound: {fileID: 0}
 --- !u!114 &531006175131526616
 MonoBehaviour:
   m_ObjectHideFlags: 0

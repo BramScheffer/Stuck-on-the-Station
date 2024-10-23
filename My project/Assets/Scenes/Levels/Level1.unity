@@ -2258,6 +2258,10 @@ PrefabInstance:
       propertyPath: ammoCount
       value: 
       objectReference: {fileID: 173742719}
+    - target: {fileID: 2739452676615843744, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 8486783892268830168, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
     - target: {fileID: 4565100718369111919, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
       propertyPath: m_Name
       value: Player
