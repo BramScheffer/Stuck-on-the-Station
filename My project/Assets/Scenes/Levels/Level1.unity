@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231583, b: 0.009772198, a: 1}
+  m_IndirectSpecularColor: {r: 0.2548835, g: 0.024231585, b: 0.009772198, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14580,6 +14580,7 @@ GameObject:
   - component: {fileID: 1304108653}
   - component: {fileID: 1304108658}
   - component: {fileID: 1304108659}
+  - component: {fileID: 1304108660}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -14722,6 +14723,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc676a8d123ffaf43972f625125c0636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1304108660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304108652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7984b05247adf2f469d8c5528261d4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 559361148}
+  targetPosition: {x: 0, y: 0, z: 0}
+  backButton: {fileID: 768037908}
+  flyInSpeed: 2
+  isPanelVisible: 0
 --- !u!4 &1304720624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb179c1c5a73e043bf24a8747c74fcc, type: 3}

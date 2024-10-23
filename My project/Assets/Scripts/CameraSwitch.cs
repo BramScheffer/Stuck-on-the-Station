@@ -22,6 +22,8 @@ public class CameraSwitch : MonoBehaviour
         buyscreen.SetActive(false);
     }
 
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G)) // Detects a single press of the "G" key
