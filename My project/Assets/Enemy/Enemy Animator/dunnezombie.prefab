@@ -3142,12 +3142,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6434581422586246365}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4434061432656724056}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7312301940999643633}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
       insertIndex: -1
@@ -3155,48 +3149,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 689771554426799672}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4326199437991063999}
   m_SourcePrefab: {fileID: 100100000, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
 --- !u!1 &728346912005327213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ce0b22c124047548b30a271edb40e5c, type: 3}
   m_PrefabInstance: {fileID: 493973713731564604}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6434581422586246365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728346912005327213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e366afbac137a4ca90c99a51b99fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trein: {fileID: 0}
-  turrets:
-  - {fileID: 0}
-  attackRange: 1.5
-  attackDamage: 10
-  slowedSpeed2: 1.5
-  slowDuration2: 2
-  agent: {fileID: 0}
-  currentTarget: {fileID: 0}
---- !u!114 &4434061432656724056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728346912005327213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe13208a57a97b94f861bf51bd8ce961, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &7312301940999643633
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3267,23 +3225,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4326199437991063999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728346912005327213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ae7de414c7a2a47b0dfb81a8e18392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hits: 0
-  health: 0
-  giant: 0
-  killed: {fileID: 0}
-  particleEffectPrefab: {fileID: 0}
-  killsund: {fileID: 0}
-  mn: {fileID: 0}
-  sSC: {fileID: 0}

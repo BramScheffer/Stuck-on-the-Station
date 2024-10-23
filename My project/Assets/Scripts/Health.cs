@@ -3,17 +3,25 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f; // De maximale gezondheid
-    private float currentHealth; // De huidige gezondheid
+    public float currentHealth; // De huidige gezondheid
 
     private void Start()
     {
         currentHealth = maxHealth; // Zet de huidige gezondheid gelijk aan de maximale gezondheid bij het begin
+        Debug.Log($"Start health: {currentHealth}");
+    }
+
+    private void Update()
+    {
+        // Log de huidige gezondheid continu in de console
+        Debug.Log($"Current health of {gameObject.name}: {currentHealth}");
     }
 
     // Methode om schade toe te brengen
     public void BrengSchadeToe(float amount)
     {
         currentHealth -= amount; // Verminder de huidige gezondheid met het schadebedrag
+        Debug.Log($"{gameObject.name} took {amount} damage. Current health: {currentHealth}");
 
         if (currentHealth <= 0)
         {

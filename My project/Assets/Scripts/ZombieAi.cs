@@ -7,96 +7,108 @@ public class ZombieAI : MonoBehaviour
     public Transform train;  // Referentie naar de trein
     public float attackDistance = 2f;  // Afstand waarbij de zombie aanvalt
     public float damage = 10f;  // Schade per aanval
+    public float attackRate = 2f;  // Tijd tussen aanvallen
+    private float nextAttackTime = 0f;  // Volgende aanvalstijd
     public float slowedSpeed2 = 0f;  // Vertraagde snelheid
     public float slowDuration2 = 0f;  // Duur van de vertraging
 
     public NavMeshAgent agent;  // NavMeshAgent component voor navigatie
     private Animator animator;  // Animator component voor animaties
-    private bool isAttacking = false;  // Controleer of de zombie aanvalt
-    public float attackCooldown = 1.5f; // Tijd tussen aanvallen
-    private float lastAttackTime = 0f; // Tijd van de laatste aanval
+    private bool isAttacking = false;  // Of de zombie aan het aanvallen is
 
-    void Start()
+    // Voeg een variabele toe om te controleren of dit de kleine zombie is
+    public bool isSmallZombie = false;
+
+    private void Start()
     {
         // Referenties ophalen
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        // Voeg een debug om te checken welke zombie dit is
+        if (isSmallZombie)
+        {
+            Debug.Log($"{gameObject.name} is a small zombie.");
+        }
+        else
+        {
+            Debug.Log($"{gameObject.name} is a big zombie.");
+        }
     }
 
-    void Update()
+    private void Update()
     {
         // Bereken de afstand tot de trein
         float distanceToTrain = Vector3.Distance(transform.position, train.position);
-        Debug.Log($"Afstand tot de trein: {distanceToTrain}"); // Debug: afstand
 
-        // Controleer of de trein nog leeft
-        Health trainHealth = train.GetComponent<Health>();
-        if (trainHealth == null || trainHealth.IsDead())
+        // Debug om te zien of de zombie dichtbij genoeg is om aan te vallen
+        Debug.Log($"{gameObject.name} Distance to train: {distanceToTrain}");
+
+        // Pas de attackDistance aan als dit een kleine zombie is
+        if (isSmallZombie)
         {
-            // Stop de zombie als de trein dood is
-            animator.SetBool("isAttacking", false);
-            isAttacking = false;
-            agent.isStopped = true;
-            return; // Stop de Update functie
+            attackDistance = 5f;  // Maak de afstand kleiner voor de kleine zombie
+            damage = 2f;  // Verlaag de schade voor kleine zombies
         }
 
-        // Als de zombie dichtbij genoeg is, stop met lopen en start met aanvallen
+        // Als de zombie dichtbij genoeg is, start de aanval
         if (distanceToTrain <= attackDistance)
         {
-            agent.isStopped = true;
-            animator.SetBool("isWalking", false);
+            agent.isStopped = true;  // Stop de zombie
+            animator.SetBool("isWalking", false); // Stop wandel animatie
 
-            // Start de aanval als de zombie niet al aanvalt
-            if (!isAttacking)
+            // Alleen aanvallen als er genoeg tijd is verstreken
+            if (Time.time >= nextAttackTime)
             {
-                // Start de aanval
-                animator.SetBool("isAttacking", true);
-                isAttacking = true;  // Update de aanvalstatus
-                lastAttackTime = Time.time; // Reset de laatste aanvalstijd
-                Debug.Log("Zombie start aanval"); // Debug: start aanval
-            }
-
-            // Controleer of de attack animatie actief is
-            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            if (stateInfo.IsName("Attack"))
-            {
-                // Controleer of de aanvalstijd is verstreken
-                if (Time.time >= lastAttackTime + attackCooldown)
+                if (!isAttacking)
                 {
-                    // Breng schade toe aan de trein als de aanvalsan animatie klaar is
-                    DealDamage();
-                    lastAttackTime = Time.time; // Update de tijd van de laatste aanval
-                    Debug.Log("Zombie heeft schade toegebracht aan de trein"); // Debug: schade toebrengen
+                    StartAttack();  // Start de aanval animatie
                 }
-            }
-            else
-            {
-                // Reset de aanvallsituatie als de animatie is afgelopen
-                if (stateInfo.normalizedTime >= 1.0f) // Check of animatie is afgelopen
+
+                // Check of de attack animatie klaar is
+                AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1.0f)
                 {
-                    animator.SetBool("isAttacking", false);
-                    isAttacking = false; // Reset de aanvallsituatie
+                    DealDamage();  // Doe schade aan het einde van de aanval
+                    nextAttackTime = Time.time + 1f / attackRate;  // Volgende aanval
+                    isAttacking = false;  // Reset de aanval status
                 }
             }
         }
         else
         {
-            // Als de zombie niet aanvalt, laat hem lopen richting de trein
+            // Blijf naar de trein lopen als we niet dichtbij genoeg zijn
             agent.isStopped = false;
             agent.SetDestination(train.position);
             animator.SetBool("isWalking", true);
             animator.SetBool("isAttacking", false);
-            isAttacking = false;
+            isAttacking = false; // Reset aanvallen
         }
     }
 
-    void DealDamage()
+    private void StartAttack()
     {
-        // Schade toebrengen aan de trein
+        isAttacking = true; // Markeer als aanvallend
+        animator.SetBool("isAttacking", true); // Trigger de aanval animatie
+        Debug.Log($"{gameObject.name} started attacking!");
+    }
+
+    private void DealDamage()
+    {
+        // Breng schade toe aan de trein
         Health trainHealth = train.GetComponent<Health>();
         if (trainHealth != null && !trainHealth.IsDead())
         {
-            trainHealth.BrengSchadeToe(damage);
+            trainHealth.BrengSchadeToe(damage); // Doe schade
+            Debug.Log($"{gameObject.name} dealt {damage} damage!");
+
+            // Optioneel: Als de trein vernietigd is, stop met aanvallen
+            if (trainHealth.IsDead())
+            {
+                agent.isStopped = true;
+                animator.SetBool("isAttacking", false);
+                isAttacking = false;
+            }
         }
     }
 
@@ -106,23 +118,19 @@ public class ZombieAI : MonoBehaviour
         train = target;
     }
 
-    // Functie om een vertraagd effect toe te passen als de zombie door prikkeldraad (bijvoorbeeld) is geraakt
+    // Vertraagd effect toepassen wanneer geraakt
     public void BarbedHit()
     {
         StartCoroutine(ApplySlowEffect());
     }
 
-    IEnumerator ApplySlowEffect()
+    private IEnumerator ApplySlowEffect()
     {
-        // Sla de originele snelheid op
-        float originalSpeed = agent.speed;
-        // Stel de nieuwe vertraagde snelheid in
-        agent.speed = slowedSpeed2;
+        float originalSpeed = agent.speed; // Sla originele snelheid op
+        agent.speed = slowedSpeed2; // Verlaag snelheid
 
-        // Wacht gedurende de duur van de vertraging
-        yield return new WaitForSeconds(slowDuration2);
+        yield return new WaitForSeconds(slowDuration2); // Wacht voor slow duration
 
-        // Herstel de originele snelheid
-        agent.speed = originalSpeed;
+        agent.speed = originalSpeed; // Herstel originele snelheid
     }
 }
