@@ -4,107 +4,109 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    public Transform trein; // The train target
-    public float attackRange = 2.0f; // Range within which the zombie can attack
-    public float attackDamage = 10f; // Damage dealt by the zombie
-    public float slowedSpeed2 = 1.5f;
-    public float slowDuration2 = 2f;
+    public Transform train;  // Referentie naar de trein
+    public float attackDistance = 2f;  // Afstand waarbij de zombie aanvalt
+    public float damage = 10f;  // Schade per aanval
+    public float slowedSpeed2 = 0f;  // Vertraagde snelheid
+    public float slowDuration2 = 0f;  // Duur van de vertraging
 
-    public NavMeshAgent agent; // NavMeshAgent for movement
-    private bool isAttacking = false; // Tracks whether the zombie is attacking
-    private ZombieAnimator zombieAnimator; // Reference to the ZombieAnimator script
-    public Transform currentTarget; // Current target for the zombie
+    public NavMeshAgent agent;  // NavMeshAgent component voor navigatie
+    private Animator animator;  // Animator component voor animaties
+    private bool isAttacking = false;  // Controleer of de zombie aanvalt
+    public float attackCooldown = 1.5f; // Tijd tussen aanvallen
+    private float lastAttackTime = 0f; // Tijd van de laatste aanval
 
-    private void Start()
+    void Start()
     {
+        // Referenties ophalen
         agent = GetComponent<NavMeshAgent>();
-        zombieAnimator = GetComponent<ZombieAnimator>();
-        agent.SetDestination(trein.position); // Set destination to the train
+        animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (currentTarget != null && !isAttacking)
-        {
-            // Move towards the target
-            agent.SetDestination(currentTarget.position);
+        // Bereken de afstand tot de trein
+        float distanceToTrain = Vector3.Distance(transform.position, train.position);
+        Debug.Log($"Afstand tot de trein: {distanceToTrain}"); // Debug: afstand
 
-            // Check if the zombie is within attack range
-            if (IsWithinAttackRange())
+        // Controleer of de trein nog leeft
+        Health trainHealth = train.GetComponent<Health>();
+        if (trainHealth == null || trainHealth.IsDead())
+        {
+            // Stop de zombie als de trein dood is
+            animator.SetBool("isAttacking", false);
+            isAttacking = false;
+            agent.isStopped = true;
+            return; // Stop de Update functie
+        }
+
+        // Als de zombie dichtbij genoeg is, stop met lopen en start met aanvallen
+        if (distanceToTrain <= attackDistance)
+        {
+            agent.isStopped = true;
+            animator.SetBool("isWalking", false);
+
+            // Start de aanval als de zombie niet al aanvalt
+            if (!isAttacking)
             {
-                Debug.Log("Zombie is within attack range.");
-                StartCoroutine(Attack()); // Start the Attack coroutine
+                // Start de aanval
+                animator.SetBool("isAttacking", true);
+                isAttacking = true;  // Update de aanvalstatus
+                lastAttackTime = Time.time; // Reset de laatste aanvalstijd
+                Debug.Log("Zombie start aanval"); // Debug: start aanval
             }
-        }
-        else if (currentTarget == null)
-        {
-            UpdateTarget(); // Find a new target if none exists
-        }
-    }
 
-    public void SetTarget(Transform target)
-    {
-        this.currentTarget = target;
-    }
-
-    private bool IsWithinAttackRange()
-    {
-        if (currentTarget != null)
-        {
-            float distance = Vector3.Distance(transform.position, currentTarget.position);
-            Debug.Log($"Distance to target: {distance}");
-            return distance <= attackRange;
-        }
-        return false;
-    }
-
-    IEnumerator Attack()
-    {
-        isAttacking = true; // Mark as attacking
-        agent.isStopped = true; // Stop movement
-        Debug.Log("Zombie is attacking."); // Log dat de zombie aanvalt
-
-        while (currentTarget != null && !currentTarget.GetComponent<Health>().IsDead())
-        {
-            Debug.Log("Triggering attack animation."); // Log dat de aanval animatie wordt getriggerd
-            zombieAnimator.TriggerAttackAnimation(); // Trigger attack animation
-            yield return new WaitForSeconds(0.5f); // Wait for animation delay
-            BrengSchadeToe(); // Deal damage
-
-            float attackAnimationLength = zombieAnimator.GetAttackAnimationLength();
-            yield return new WaitForSeconds(attackAnimationLength - 0.5f); // Wait for remaining animation
-        }
-
-        if (currentTarget != null && currentTarget.GetComponent<Health>().IsDead())
-        {
-            UpdateTarget(); // Find a new target if the current is dead
-        }
-
-        isAttacking = false; // Reset attack status
-        agent.isStopped = false; // Resume movement
-    }
-
-
-
-    public void BrengSchadeToe()
-    {
-        if (currentTarget != null)
-        {
-            Health targetHealth = currentTarget.GetComponent<Health>();
-
-            if (targetHealth != null)
+            // Controleer of de attack animatie actief is
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Attack"))
             {
-                targetHealth.BrengSchadeToe(attackDamage); // Dit moet nu werken
-                Debug.Log("Damage dealt to the target.");
+                // Controleer of de aanvalstijd is verstreken
+                if (Time.time >= lastAttackTime + attackCooldown)
+                {
+                    // Breng schade toe aan de trein als de aanvalsan animatie klaar is
+                    DealDamage();
+                    lastAttackTime = Time.time; // Update de tijd van de laatste aanval
+                    Debug.Log("Zombie heeft schade toegebracht aan de trein"); // Debug: schade toebrengen
+                }
             }
             else
             {
-                Debug.LogWarning("Current target has no Health component.");
+                // Reset de aanvallsituatie als de animatie is afgelopen
+                if (stateInfo.normalizedTime >= 1.0f) // Check of animatie is afgelopen
+                {
+                    animator.SetBool("isAttacking", false);
+                    isAttacking = false; // Reset de aanvallsituatie
+                }
             }
+        }
+        else
+        {
+            // Als de zombie niet aanvalt, laat hem lopen richting de trein
+            agent.isStopped = false;
+            agent.SetDestination(train.position);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isAttacking", false);
+            isAttacking = false;
         }
     }
 
+    void DealDamage()
+    {
+        // Schade toebrengen aan de trein
+        Health trainHealth = train.GetComponent<Health>();
+        if (trainHealth != null && !trainHealth.IsDead())
+        {
+            trainHealth.BrengSchadeToe(damage);
+        }
+    }
 
+    // Methode om het doel (de trein) in te stellen
+    public void SetTarget(Transform target)
+    {
+        train = target;
+    }
+
+    // Functie om een vertraagd effect toe te passen als de zombie door prikkeldraad (bijvoorbeeld) is geraakt
     public void BarbedHit()
     {
         StartCoroutine(ApplySlowEffect());
@@ -112,16 +114,15 @@ public class ZombieAI : MonoBehaviour
 
     IEnumerator ApplySlowEffect()
     {
+        // Sla de originele snelheid op
         float originalSpeed = agent.speed;
+        // Stel de nieuwe vertraagde snelheid in
         agent.speed = slowedSpeed2;
 
+        // Wacht gedurende de duur van de vertraging
         yield return new WaitForSeconds(slowDuration2);
 
+        // Herstel de originele snelheid
         agent.speed = originalSpeed;
-    }
-
-    private void UpdateTarget()
-    {
-        // Logic to find a new target
     }
 }

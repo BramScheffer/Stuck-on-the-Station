@@ -64,7 +64,7 @@ public class ZombieAnimator : MonoBehaviour
     // Deze functie wordt aangeroepen door een Animation Event op het moment dat de aanval schade moet doen
     public void OnAttackHit()
     {
-        zombieAI.BrengSchadeToe(); // Correcte aanroep van de schade methode
+       // Correcte aanroep van de schade methode
     }
 
 
