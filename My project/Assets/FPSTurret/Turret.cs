@@ -98,9 +98,10 @@ public class Turret : MonoBehaviour
             // Play muzzle flash effect
             if (muzzleFlash != null)
             {
-                muzzleFlash.Stop();
-                muzzleFlash.Clear();
-                muzzleFlash.Play();
+                if (!muzzleFlash.isPlaying)
+                {
+                    muzzleFlash.Play();
+                }
             }
 
             // Perform the raycast
