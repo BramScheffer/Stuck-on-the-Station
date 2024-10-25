@@ -330,7 +330,7 @@ MonoBehaviour:
   find: {fileID: 1265916246811120603}
   projectilePrefab: {fileID: 7298384900798431490, guid: 96c4e82ce5015ec43affa699317d5456, type: 3}
   firePoint: {fileID: 4017454642012705190}
-  fireCooldown: 0.5
+  fireCooldown: 1
   projectileSpeed: 50
   muzzleFlash: {fileID: 4410266641938762927, guid: e7222c510fce4d4439700bc0dde9df82, type: 3}
   fireSound: {fileID: 638757884612141790}
