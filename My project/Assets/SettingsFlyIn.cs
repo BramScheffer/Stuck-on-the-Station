@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class UIPanelFlyInNoButton : MonoBehaviour
 {
-    public RectTransform panel;         // RectTransform of the UI panel that needs to move
-    public Vector3 targetPosition;      // The target position where the panel should end up (on-screen)
-    public Button backButton;           // The "Back" button to trigger reverse animation
-    public float flyInSpeed = 2f;       // Speed at which the panel moves to the target position (lower value for smoothness)
-    public bool isPanelVisible = false; // Tracks whether the panel is currently visible or not
-    private Vector3 offScreenPosition;  // Start position of the panel (off-screen to the right)
-    private Coroutine movePanelCoroutine; // Reference to the currently running coroutine
+    public RectTransform panel;             // RectTransform of the UI panel that needs to move
+    public Vector3 targetPosition;          // The target position where the panel should end up (on-screen)
+    public Button backButton;               // The "Back" button to trigger reverse animation
+    public float flyInSpeed = 0.25f;        // Duration for panel movement (lower is faster)
+    public bool isPanelVisible = false;     // Tracks whether the panel is currently visible or not
+    private Vector3 offScreenPosition;      // Start position of the panel (off-screen to the right)
+    private Coroutine movePanelCoroutine;   // Reference to the currently running coroutine
+    private Vector3 velocity = Vector3.zero; // SmoothDamp velocity reference
 
     void Start()
     {
@@ -73,16 +74,10 @@ public class UIPanelFlyInNoButton : MonoBehaviour
 
     IEnumerator MovePanel(Vector3 destination)
     {
-        float elapsedTime = 0f;          // Track time since movement started
-        Vector3 startingPosition = panel.anchoredPosition; // Initial position of the panel
-
-        while (elapsedTime < 1f)
+        while (Vector3.Distance(panel.anchoredPosition, destination) > 0.1f)
         {
-            // Interpolate the position using Lerp
-            panel.anchoredPosition = Vector3.Lerp(startingPosition, destination, elapsedTime);
-
-            // Increase elapsed time by the adjusted flyInSpeed
-            elapsedTime += Time.deltaTime * flyInSpeed;
+            // Smoothly move the panel to the destination using SmoothDamp
+            panel.anchoredPosition = Vector3.SmoothDamp(panel.anchoredPosition, destination, ref velocity, flyInSpeed);
 
             yield return null;  // Wait for the next frame
         }

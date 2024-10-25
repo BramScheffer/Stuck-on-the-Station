@@ -5160,6 +5160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  camswitch: {fileID: 0}
+  trein: {fileID: 0}
   healthText: {fileID: 0}
 --- !u!1001 &401540954
 PrefabInstance:
@@ -7851,9 +7853,37 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1304108659}
+      objectReference: {fileID: 1304108662}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NextLevelButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440471889793373390, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670045652149286363, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
+      propertyPath: m_text
+      value: N E X T  L E V E L
+      objectReference: {fileID: 0}
     - target: {fileID: 4216135280777421189, guid: 10c43fe5d71e9594f985221db3a54e59, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10960,6 +10990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  camswitch: {fileID: 0}
+  trein: {fileID: 0}
   healthText: {fileID: 1933723763}
 --- !u!4 &941901564 stripped
 Transform:
@@ -14603,6 +14635,7 @@ GameObject:
   - component: {fileID: 1304108659}
   - component: {fileID: 1304108660}
   - component: {fileID: 1304108661}
+  - component: {fileID: 1304108662}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -14628,6 +14661,7 @@ MonoBehaviour:
   inBuy: 0
   dead: 0
   buyscreen: {fileID: 45118518}
+  loseCanvas: {fileID: 0}
   settingsPanel: {fileID: 0}
 --- !u!65 &1304108654
 BoxCollider:
@@ -14776,6 +14810,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmpProButton: {fileID: 1998644000}
   mainMenuSceneName: MainMenu
+--- !u!114 &1304108662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304108652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc676a8d123ffaf43972f625125c0636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1304720624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9fb179c1c5a73e043bf24a8747c74fcc, type: 3}

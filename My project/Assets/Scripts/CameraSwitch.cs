@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public Camera playCam;
-    public Camera buyCam;
-    private Camera activeCamera;
-    public bool camswitched;
-    public bool inBuy;
-    public bool dead = false;
-    public GameObject buyscreen;
-    public InGameSettingsPanel settingsPanel; // Reference to the settings panel script
+    public Camera playCam;                       // Reference to the gameplay camera
+    public Camera buyCam;                        // Reference to the buy camera
+    private Camera activeCamera;                 // The currently active camera
+    public bool camswitched;                     // Flag to track if the camera is switched
+    public bool inBuy;                           // Flag to track if in the buy screen
+    public bool dead = false;                    // Flag to track if the player is dead
+    public GameObject buyscreen;                 // The buy screen UI
+    public GameObject loseCanvas;                // The lose canvas UI to be activated on death
+    public InGameSettingsPanel settingsPanel;    // Reference to the settings panel script
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class CameraSwitch : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; // Start with the cursor hidden
         buyscreen.SetActive(false);
+       
     }
 
     void Update()
@@ -78,6 +80,9 @@ public class CameraSwitch : MonoBehaviour
         activeCamera = buyCam;
         inBuy = false;
         dead = true;
+
+        // Show the lose canvas
+        loseCanvas.SetActive(true);
 
         // Show cursor when dead regardless of settings panel
         Cursor.lockState = CursorLockMode.None;

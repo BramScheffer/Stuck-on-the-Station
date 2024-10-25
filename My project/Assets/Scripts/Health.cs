@@ -5,6 +5,8 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100f; // Maximal health
     public float currentHealth; // Current health
+    public CameraSwitch camswitch;
+    public GameObject trein;
 
     // Reference to the TextMeshPro text component to display health
     public TMP_Text healthText;
@@ -20,6 +22,10 @@ public class Health : MonoBehaviour
     {
         // Continuously log the current health in the console
         Debug.Log($"Current health of {gameObject.name}: {currentHealth}");
+        if (currentHealth <= 0f)
+        {
+            camswitch.death();
+        }
     }
 
     // Method to apply damage
@@ -40,13 +46,15 @@ public class Health : MonoBehaviour
     public bool IsDead()
     {
         return currentHealth <= 0; // Return true if health is 0 or below
+        
+
     }
 
     // Remove or destroy the object when it dies
     void Sterf()
     {
         Debug.Log($"{gameObject.name} is vernietigd!");
-        Destroy(gameObject); // Destroy the object upon death
+       
     }
 
     // Method to update the health display text
