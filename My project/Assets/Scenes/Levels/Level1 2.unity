@@ -1258,38 +1258,10 @@ PrefabInstance:
       propertyPath: moneyTxt
       value: 
       objectReference: {fileID: 1602400221}
-    - target: {fileID: 867486504440134588, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 867486504440134588, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 867486504440134588, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894461976604302882, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1894461976604302882, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.52
-      objectReference: {fileID: 0}
     - target: {fileID: 2739452676615843744, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1304108653}
-    - target: {fileID: 2739452676615843744, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: maxAmmo
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739452676615843744, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
-      propertyPath: fireRate
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2739452676615843744, guid: 1046bef1e445f9c4286e5f1dfeafaa32, type: 3}
       propertyPath: ammoCount
       value: 

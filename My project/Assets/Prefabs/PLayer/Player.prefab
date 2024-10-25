@@ -186,7 +186,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -264,14 +264,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d861594dd30231d4c9814fa6f7778dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 10
+  fireRate: 6
   maxAmmo: 50
   reloadTime: 2
   range: 500
   ammo: 500
   empty: 0
   raycastOrigin: {fileID: 6469442208920635239}
-  muzzleFlash: {fileID: 7294995600647707335}
+  muzzleFlash: {fileID: 8486783892268830168, guid: ec556a84dda73cd47a194bf78d5e2eca, type: 3}
   impactEffect: {fileID: 7925723148074563215, guid: 09412b45bac090744a01367c2ac71497, type: 3}
   fpsCamera: {fileID: 867486504440134588}
   shotsound: {fileID: 8300000, guid: dcbc07e4f99e524468a51859eccb1c46, type: 3}
@@ -471,11 +471,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2462389573142902988, guid: 914d0986de66c964099ce042f3ced839, type: 3}
   m_PrefabInstance: {fileID: 4717621555898099068}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &7294995600647707335 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2613596409503219643, guid: 914d0986de66c964099ce042f3ced839, type: 3}
-  m_PrefabInstance: {fileID: 4717621555898099068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6010109966779775814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,7 +485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269853724398495076, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5269853724398495076, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -498,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269853724398495076, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.87
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 5269853724398495076, guid: d0b4c7e17c786444fa4a2ef2dce293ce, type: 3}
       propertyPath: m_LocalRotation.w
