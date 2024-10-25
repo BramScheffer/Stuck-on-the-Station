@@ -1,44 +1,64 @@
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
-    public float maxHealth = 100f; // De maximale gezondheid
-    public float currentHealth; // De huidige gezondheid
+    public float maxHealth = 100f; // Maximal health
+    public float currentHealth; // Current health
+
+    // Reference to the TextMeshPro text component to display health
+    public TMP_Text healthText;
 
     private void Start()
     {
-        currentHealth = maxHealth; // Zet de huidige gezondheid gelijk aan de maximale gezondheid bij het begin
+        currentHealth = maxHealth; // Set current health to max health at the start
+        UpdateHealthText(); // Update the health text at the start
         Debug.Log($"Start health: {currentHealth}");
     }
 
     private void Update()
     {
-        // Log de huidige gezondheid continu in de console
+        // Continuously log the current health in the console
         Debug.Log($"Current health of {gameObject.name}: {currentHealth}");
     }
 
-    // Methode om schade toe te brengen
+    // Method to apply damage
     public void BrengSchadeToe(float amount)
     {
-        currentHealth -= amount; // Verminder de huidige gezondheid met het schadebedrag
+        currentHealth -= amount; // Reduce current health by the damage amount
         Debug.Log($"{gameObject.name} took {amount} damage. Current health: {currentHealth}");
+
+        UpdateHealthText(); // Update the health text display after taking damage
 
         if (currentHealth <= 0)
         {
-            Sterf(); // Roep de sterf-functie aan als de gezondheid op of onder 0 komt
+            Sterf(); // Call the death function if health drops to 0 or below
         }
     }
 
-    // Controleer of het object dood is
+    // Check if the object is dead
     public bool IsDead()
     {
-        return currentHealth <= 0; // Retourneer true als de gezondheid 0 of lager is
+        return currentHealth <= 0; // Return true if health is 0 or below
     }
 
-    // Verwijder of vernietig het object als het dood is
+    // Remove or destroy the object when it dies
     void Sterf()
     {
         Debug.Log($"{gameObject.name} is vernietigd!");
-        Destroy(gameObject); // Vernietig het object als het sterft
+        Destroy(gameObject); // Destroy the object upon death
+    }
+
+    // Method to update the health display text
+    private void UpdateHealthText()
+    {
+        if (healthText != null)
+        {
+            healthText.text = $"{currentHealth}";
+        }
+        else
+        {
+            Debug.LogWarning("Health text is not assigned in the Inspector.");
+        }
     }
 }

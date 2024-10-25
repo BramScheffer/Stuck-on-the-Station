@@ -5160,6 +5160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthText: {fileID: 0}
 --- !u!1001 &401540954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6829,7 +6830,7 @@ GameObject:
   - component: {fileID: 559361148}
   - component: {fileID: 559361151}
   - component: {fileID: 559361150}
-  - component: {fileID: 559361149}
+  - component: {fileID: 559361152}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -6863,24 +6864,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &559361149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559361147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5137bba98234a844d81ef60b1fcdd3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 559361148}
-  targetPosition: {x: 0, y: 0, z: 0}
-  triggerButton: {fileID: 768037908}
-  backButton: {fileID: 768037908}
-  flyInSpeed: 2.01
-  isPanelVisible: 0
 --- !u!114 &559361150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6919,6 +6902,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559361147}
   m_CullTransparentMesh: 1
+--- !u!114 &559361152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559361147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933329f9525e87541849772928ef5964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 559361148}
+  targetPosition: {x: 0, y: 0, z: 0}
+  backButton: {fileID: 768037908}
+  flyInSpeed: 2
+  isPanelVisible: 0
 --- !u!4 &563666624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 735531193596725270, guid: e133a2ef8d0374a4fb35fda2b816c3fa, type: 3}
@@ -10960,6 +10960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthText: {fileID: 1933723763}
 --- !u!4 &941901564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d64e44edc5f24a84ca940c0099c9df6c, type: 3}
@@ -22777,6 +22778,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 389578779}
   m_SourcePrefab: {fileID: 100100000, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
+--- !u!114 &1933723763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6989437265092177768, guid: 8448f38b8cc03984da8ead2f73fc36de, type: 3}
+  m_PrefabInstance: {fileID: 1933723762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389578775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1939597787
 PrefabInstance:
   m_ObjectHideFlags: 0
