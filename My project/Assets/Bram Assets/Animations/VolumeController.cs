@@ -29,6 +29,6 @@ public class SettingsMenu : MonoBehaviour
 
     public void UpdateVolumeText(float value)
     {
-        volumeText.text = $"Volume: {Mathf.RoundToInt(value * 100)}%";
+        volumeText.text = $" {Mathf.RoundToInt(value * 100)}%";
     }
 }

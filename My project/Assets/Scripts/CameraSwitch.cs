@@ -19,10 +19,9 @@ public class CameraSwitch : MonoBehaviour
         buyCam.enabled = false;
         camswitched = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false; // Start with the cursor hidden
         buyscreen.SetActive(false);
     }
-
-
 
     void Update()
     {
@@ -42,6 +41,7 @@ public class CameraSwitch : MonoBehaviour
         {
             if (activeCamera == playCam)
             {
+                // Switching to buyCam
                 playCam.enabled = false;
                 buyCam.enabled = true;
                 activeCamera = buyCam;
@@ -49,15 +49,13 @@ public class CameraSwitch : MonoBehaviour
                 buyscreen.SetActive(true);
                 inBuy = true;
 
-                // Only unlock the cursor if the settings panel is not open
-                if (!settingsPanel.IsSettingsPanelVisible())
-                {
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = true;
-                }
+                // Unlock and show cursor when entering buy screen
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
+                // Switching back to playCam
                 playCam.enabled = true;
                 buyCam.enabled = false;
                 activeCamera = playCam;
@@ -65,29 +63,24 @@ public class CameraSwitch : MonoBehaviour
                 buyscreen.SetActive(false);
                 inBuy = false;
 
-                // Only lock the cursor if the settings panel is not open
-                if (!settingsPanel.IsSettingsPanelVisible())
-                {
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
-                }
+                // Lock and hide cursor when exiting buy screen
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }
 
     public void death()
     {
+        // When the player is "dead," switch to buyCam and show cursor
         playCam.enabled = false;
         buyCam.enabled = true;
         activeCamera = buyCam;
         inBuy = false;
         dead = true;
 
-        // Only unlock the cursor if the settings panel is not open
-        if (!settingsPanel.IsSettingsPanelVisible())
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
+        // Show cursor when dead regardless of settings panel
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
