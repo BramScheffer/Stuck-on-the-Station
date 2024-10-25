@@ -19,6 +19,10 @@ public class MainMenuButton : MonoBehaviour
     // Function to load the main menu scene
     void GoToMainMenu()
     {
+        // Reset time scale to 1
+        Time.timeScale = 1;
+
+        // Load the main menu scene
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }
